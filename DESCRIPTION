@@ -1,0 +1,11 @@
+Package: businessplots
+Type: Package
+Title: Create Business Plots in R
+Version: 0.1.0
+Author: Yves R. Sagaert
+Maintainer: The package maintainer <yourself@somewhere.net>
+Description: Easy-to-use plotting tools for data in R. Don't loose an endless amount of time tweaking your graph right, but focus on the interpretation of the data. This package can be used in creating Business Dashboards in R. 
+License: JEP
+Encoding: UTF-8
+LazyData: true
+Imports: ggplot2, scales, lubridate
