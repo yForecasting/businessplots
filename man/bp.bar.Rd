@@ -1,21 +1,22 @@
-\name{bp.line}
-\alias{bp.line}
+\name{bp.bar}
+\alias{bp.bar}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 %%  ~~function to do ... ~~
-Business Plot: 1 line
+Business Plot: Simple Bar Graph
 }
 \description{
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 Plots 1 line from a csv file: column 1 is the horizontal axis, column 2 is the plotted variable.
+The height of the bar can be given in column 2, or this can be summarized by the function.
 }
 \usage{
-bp.line(file)
+bp.bar(file, valuesgiven=TRUE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{file}{csv-file where different column represent different variables. The values are separated by ';'}
-%%     ~~Describe \code{x} here~~
+  \item{valuesgiven}{If set on TRUE, the summarized values are given in column 2 of the csv file. Otherwise this function summarizes the data. This is standard set on TRUE.}
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
@@ -46,7 +47,9 @@ Yves Sagaert
 \examples{
 ##Primary use
 bp.line('YearReport.csv')
-}
 
-\keyword{ ~line }
-\keyword{ ~line plot }
+}
+% Add one or more standard keywords, see file 'KEYWORDS' in the
+% R documentation directory.
+\keyword{ ~bar }% use one of  RShowDoc("KEYWORDS")
+\keyword{ ~bar plot }% __ONLY ONE__ keyword per line
