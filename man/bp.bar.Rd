@@ -11,12 +11,13 @@ Plots 1 line from a csv file: column 1 is the horizontal axis, column 2 is the p
 The height of the bar can be given in column 2, or this can be summarized by the function.
 }
 \usage{
-bp.bar(file, valuesgiven=TRUE)
+bp.bar(file, valuesgiven=TRUE, horbars=FALSE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{file}{csv-file where different column represent different variables. The values are separated by ';'}
   \item{valuesgiven}{If set on TRUE, the summarized values are given in column 2 of the csv file. Otherwise this function summarizes the data. This is standard set on TRUE.}
+  \item{horbars}{Horizental bar chart is default set to FALSE.}
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
@@ -46,7 +47,7 @@ Yves Sagaert
 }
 \examples{
 ##Primary use
-bp.line('YearReport.csv')
+bp.bar('YearReport.csv')
 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
