@@ -1,2 +1,3 @@
-^.*\.Rproj$
+^businessplots\.Rproj$
 ^\.Rproj\.user$
+^LICENSE\.md$
