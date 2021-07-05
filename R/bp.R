@@ -1,10 +1,10 @@
 #' generic businessplot function
 #'
-#' Creates a general plot of the data. 
+#' Creates a general plot of the data.
 #'
 #' This function creates a plot based on the format of the data
 #' and this can be: scatterplot, lineplot or bar plot.
-#' 
+#'
 #'
 #' @param file A csv file with the source data
 #'
@@ -40,4 +40,21 @@ bp <- function(file){
     geom_line(aes(color=basic_color),size=1.5)+
     geom_point(aes(color=basic_color),size=3)+scale_x_continuous(breaks=df[,1])
     #scale_linetype_manual(values=c("twodash", "dotted"))
+}
+
+bp2 <- function(file){
+  df <- read.csv(file,header=TRUE,sep=';')
+  if (substr(colnames(df)[1],2,3)== ".."){
+    df <- read.csv(file,fileEncoding="UTF-8-BOM",header=TRUE,sep=';')
+  }
+  names <- names(df)
+  basic_color <- "#999999"
+  basic_palette <- "Paired"
+  pch <- 1
+
+  # todo detect sep automatically later ;/,/tab
+  plot(x=df[,1], y=df[,2], pch = 0, col = 1:10,
+    xlab=names[1] , ylab = names[2],
+    )
+  #scale_linetype_manual(values=c("twodash", "dotted"))
 }
