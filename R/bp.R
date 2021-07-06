@@ -67,18 +67,24 @@ bar <- function(file, horizontal = TRUE, Stacked = FALSE){
   basic_color <- "#999999"
   basic_palette <- "Paired"
   pch <- 1
-
-  if(horizontal){
-    x_name <- names[2]
-    y_name <- names[1]
+  if(Stacked){
+    barplot(height=as.matrix(df), col = basic_color,
+            xlab=names[1] , ylab = names[2], beside= FALSE,
+            horiz = horizontal )
   }
   else{
-    x_name <- names[1]
-    y_name <- names[2]
+    if(horizontal){
+      x_name <- names[2]
+      y_name <- names[1]
+    }
+    else{
+      x_name <- names[1]
+      y_name <- names[2]
+    }
+    # todo detect sep automatically later ;/,/tab
+    barplot(height=as.matrix(df[,2]), col = basic_color,
+       xlab=x_name , ylab = y_name, beside= TRUE, names.arg = df[,1],
+       horiz = horizontal
+  )
   }
-  # todo detect sep automatically later ;/,/tab
-  barplot(height=as.matrix(df[,2]), col = basic_color,
-     xlab=x_name , ylab = y_name, beside= !Stacked, names.arg = df[,1],
-     horiz = horizontal
-)
 }
