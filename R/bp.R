@@ -69,7 +69,7 @@ bar <- function(file){
   pch <- 1
 
   # todo detect sep automatically later ;/,/tab
-  barplot(x=df[,1], y=df[,2], pch = 0, col = basic_color,
+  barplot(height=as.matrix(df), pch = 0, col = basic_color,
        xlab=names[1] , ylab = names[2],
   )
 }
