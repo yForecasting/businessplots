@@ -86,5 +86,6 @@ line <- function(file, x_column, y_column){
   plot(x=df[,x_column], y=df[,y_column], type ="b", pch = pch, col = color,
        xlab=x_column , ylab = y_column
   )
+
   #scale_linetype_manual(values=c("twodash", "dotted"))
 }
