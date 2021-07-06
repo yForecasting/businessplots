@@ -54,7 +54,7 @@ scatterplot <- function(file){
 
   # todo detect sep automatically later ;/,/tab
   plot(x=df[,1], y=df[,2], pch = 0, col = basic_color,
-    xlab=names[1] , ylab = names[2],
+    xlab=names[1] , ylab = names[2]
     )
 }
 
@@ -69,7 +69,8 @@ bar <- function(file){
   pch <- 1
 
   # todo detect sep automatically later ;/,/tab
-  barplot(height=as.matrix(df), pch = 0, col = basic_color,
-       xlab=names[1] , ylab = names[2],
-  )
+  barplot(height=as.matrix(df[,2]), col = basic_color,
+     xlab=names[1] , ylab = names[2], beside=TRUE, names.arg = df[,1],
+     horiz = FALSE
+)
 }
