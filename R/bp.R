@@ -22,7 +22,7 @@
 #'   }
 #'
 #'
-scatter <- function(file){
+scatter <- function(file, x_column, y_column){
   df <- read.csv(file,header=TRUE,sep=';')
   if (substr(colnames(df)[1],2,3)== ".."){
     df <- read.csv(file,fileEncoding="UTF-8-BOM",header=TRUE,sep=';')
@@ -33,12 +33,12 @@ scatter <- function(file){
   pch <- 1
 
   # todo detect sep automatically later ;/,/tab
-  plot(x=df[,1], y=df[,2], pch = pch, col = basic_color,
-    xlab=names[1] , ylab = names[2]
+  plot(x=df[,x_column], y=df[,y_column], pch = pch, col = basic_color,
+    xlab=x_column , ylab = y_column
     )
 }
 
-bar <- function(file, horizontal = TRUE, Stacked = FALSE){
+bar <- function(file, x_column, y_column, horizontal = TRUE, Stacked = FALSE){
   df <- read.csv(file,header=TRUE,sep=';')
   if (substr(colnames(df)[1],2,3)== ".."){
     df <- read.csv(file,fileEncoding="UTF-8-BOM",header=TRUE,sep=';')
@@ -49,27 +49,29 @@ bar <- function(file, horizontal = TRUE, Stacked = FALSE){
   pch <- 1
   if(Stacked){
     barplot(height=as.matrix(df), col = basic_color,
-            xlab=names[1] , ylab = names[2], beside= FALSE,
+            xlab=x_column , ylab=y_column, beside= FALSE,
             horiz = horizontal )
   }
+  # todo detect sep automatically later ;/,/tab
   else{
     if(horizontal){
-      x_name <- names[2]
-      y_name <- names[1]
+      barplot(height=as.matrix(df[,y_column]), col = basic_color,
+              xlab=y_column , ylab = x_column, beside= TRUE, names.arg = df[,x_column],
+              horiz = horizontal
+      )
     }
     else{
-      x_name <- names[1]
-      y_name <- names[2]
+      barplot(height=as.matrix(df[,y_column]), col = basic_color,
+              xlab=x_column , ylab = y_column, beside= TRUE, names.arg = df[,x_column],
+              horiz = horizontal
+      )
     }
-    # todo detect sep automatically later ;/,/tab
-    barplot(height=as.matrix(df[,2]), col = basic_color,
-       xlab=x_name , ylab = y_name, beside= TRUE, names.arg = df[,1],
-       horiz = horizontal
-  )
+
+
   }
 }
 
-line <- function(file){
+line <- function(file, x_column, y_column){
   df <- read.csv(file,header=TRUE,sep=';')
   if (substr(colnames(df)[1],2,3)== ".."){
     df <- read.csv(file,fileEncoding="UTF-8-BOM",header=TRUE,sep=';')
@@ -77,12 +79,12 @@ line <- function(file){
   names <- names(df)
   basic_color <- "#999999"
   basic_palette <- "Paired"
-  # todo detect sep automatically later ;/,/tab
+  color <- "red"
   pch <- 1
 
   # todo detect sep automatically later ;/,/tab
-  plot(x=df[,1], y=df[,2], type ="b", pch = pch, col = "red",
-       xlab=names[1] , ylab = names[2]
+  plot(x=df[,x_column], y=df[,y_column], type ="b", pch = pch, col = color,
+       xlab=x_column , ylab = y_column
   )
   #scale_linetype_manual(values=c("twodash", "dotted"))
 }
