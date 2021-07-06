@@ -42,7 +42,7 @@ bp <- function(file){
     #scale_linetype_manual(values=c("twodash", "dotted"))
 }
 
-bp2 <- function(file){
+scatterplot <- function(file){
   df <- read.csv(file,header=TRUE,sep=';')
   if (substr(colnames(df)[1],2,3)== ".."){
     df <- read.csv(file,fileEncoding="UTF-8-BOM",header=TRUE,sep=';')
@@ -53,8 +53,23 @@ bp2 <- function(file){
   pch <- 1
 
   # todo detect sep automatically later ;/,/tab
-  plot(x=df[,1], y=df[,2], pch = 0, col = 1:10,
+  plot(x=df[,1], y=df[,2], pch = 0, col = basic_color,
     xlab=names[1] , ylab = names[2],
     )
-  #scale_linetype_manual(values=c("twodash", "dotted"))
+}
+
+bar <- function(file){
+  df <- read.csv(file,header=TRUE,sep=';')
+  if (substr(colnames(df)[1],2,3)== ".."){
+    df <- read.csv(file,fileEncoding="UTF-8-BOM",header=TRUE,sep=';')
+  }
+  names <- names(df)
+  basic_color <- "#999999"
+  basic_palette <- "Paired"
+  pch <- 1
+
+  # todo detect sep automatically later ;/,/tab
+  barplot(x=df[,1], y=df[,2], pch = 0, col = basic_color,
+       xlab=names[1] , ylab = names[2],
+  )
 }
