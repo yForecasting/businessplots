@@ -58,7 +58,7 @@ scatterplot <- function(file){
     )
 }
 
-bar <- function(file){
+bar <- function(file, horizontal = TRUE, Stacked = FALSE){
   df <- read.csv(file,header=TRUE,sep=';')
   if (substr(colnames(df)[1],2,3)== ".."){
     df <- read.csv(file,fileEncoding="UTF-8-BOM",header=TRUE,sep=';')
@@ -68,9 +68,17 @@ bar <- function(file){
   basic_palette <- "Paired"
   pch <- 1
 
+  if(horizontal){
+    x_name <- names[2]
+    y_name <- names[1]
+  }
+  else{
+    x_name <- names[1]
+    y_name <- names[2]
+  }
   # todo detect sep automatically later ;/,/tab
   barplot(height=as.matrix(df[,2]), col = basic_color,
-     xlab=names[1] , ylab = names[2], beside=TRUE, names.arg = df[,1],
-     horiz = FALSE
+     xlab=x_name , ylab = y_name, beside= !Stacked, names.arg = df[,1],
+     horiz = horizontal
 )
 }
