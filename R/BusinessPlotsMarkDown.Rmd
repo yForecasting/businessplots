@@ -91,3 +91,11 @@ bar(filepath, x_axis, y_axis ,FALSE, TRUE, colors[[1]], colors[[2]], colors[[3]]
 ```{r histogram, echo=FALSE}
 histogram(filepath, y_axis, TRUE, colors[[1]], colors[[2]], colors[[3]], colors[[4]], colors[[5]], colors[[6]])
 ```
+
+## Boxplot
+```{r boxplot, echo=FALSE}
+boxplt(filepath, y_axis, symbol[[1]], TRUE, colors[[1]], colors[[2]], colors[[3]], colors[[4]], colors[[5]], colors[[6]])
+```
+
+## Piechart
+
