@@ -9,12 +9,13 @@
 #' @author Ruben Vanhecke
 #'
 #'
-#' @return A graphical plot
+#' @return Styles
 #' @export
 #'
 #' @examples
 #'   \dontrun{
-#'      bp("testdata.csv")
+#'      formatobject("testdata.csv")
+#'      extract_data_formatobject(formatobject("testdata.csv"), "colors)
 #'   }
 #'
 #'
@@ -38,3 +39,4 @@ extract_data_formatobject <- function(formatobject = formatobject("formatobject.
   data <- formatobject[, column_name]
   return(as.list(strsplit(data, ",")[[1]]))
 }
+
