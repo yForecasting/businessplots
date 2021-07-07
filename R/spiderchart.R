@@ -1,24 +1,23 @@
-#' generic businessplot function
+#' spider chart function
 #'
-#' Creates a general plot of the data.
+#' Creates a spider chart of the data.
 #'
-#' This function creates a plot based on the format of the data
-#' and this can be: scatterplot, lineplot or bar plot.
-#'
+#' This function creates a spider chart based on two columns of a file with data.
 #'
 #' @param file A csv file with the source data
+#' @param main_column Name of the column of the file with the column names for the spider chart
+#' @param data_column Name of the column of the file with the data for the spider chart
 #'
-#' @author Yves R. Sagaert
+#' @author Ruben Vanhecke
 #'
-#' at import forecast
-#' at import Mcomp
+#' at import fmsb
 #'
-#' @return A graphical plot
+#' @return A spider chart
 #' @export
 #'
 #' @examples
 #'   \dontrun{
-#'      bp("testdata.csv")
+#'      spiderchart("testdata.csv", "Year", "Quota")
 #'   }
 #'
 #'
@@ -26,7 +25,7 @@
 
 # plot spider chart
 spiderchart <- function(file, main_column, data_column){
-  # file is the file with all original data to read
+  # file is a csv file with the source data
   # main_column is the name of the column with the column names of the spider chart
   # data_column is the name of the column with the data of the spider chart
 
