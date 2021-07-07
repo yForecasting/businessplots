@@ -35,8 +35,8 @@ spiderchart <- function(file, main_column, data_column){
 
   # read data
   data <- read.csv(file,header=TRUE,sep=';')
-  if (substr(colnames(df)[1],2,3)== ".."){
-    df <- read.csv(file,fileEncoding="UTF-8-BOM",header=TRUE,sep=';')
+  if (substr(colnames(data)[1],2,3)== ".."){
+    df <- read.csv(data,fileEncoding="UTF-8-BOM",header=TRUE,sep=';')
   }
 
   # retrieve columns spider chart
