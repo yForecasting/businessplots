@@ -22,13 +22,13 @@
 #'   }
 #'
 #'
-scatter <- function(file, x_column, y_column){
+scatter <- function(file, x_column, y_column, PrimaryColor){
   df <- read.csv(file,header=TRUE,sep=';')
   if (substr(colnames(df)[1],2,3)== ".."){
     df <- read.csv(file,fileEncoding="UTF-8-BOM",header=TRUE,sep=';')
   }
   names <- names(df)
-  basic_color <- "#999999"
+  basic_color <- PrimaryColor
   basic_palette <- "Paired"
   pch <- 1
 

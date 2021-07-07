@@ -1,0 +1,33 @@
+---
+title: "Business Plots"
+author: "Isolde B, Emiel C, Ruben V, Yves S"
+date: "7-7-2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+#Import files
+knitr::opts_chunk$set(echo = TRUE)
+source("bp.R", local = knitr::knit_global())
+
+#Variable Declaration
+filepath = "./YearReport.csv"
+PrimaryColor = "#004D9A"
+```
+
+## File Check
+```{r file_import, echo=FALSE}
+file_exists <- file.exists(filepath)
+if(file_exists){
+print("File succesful imported")
+}
+if(!file_exists){
+print("File not found")
+}
+print(file_exists)
+```
+
+## Scatter Plot
+```{r scatter, echo=FALSE}
+scatter(filepath, "Year","Quota", PrimaryColor)
+```
