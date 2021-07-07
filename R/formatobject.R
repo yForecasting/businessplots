@@ -37,6 +37,11 @@ formatobject <- function(file = "formatobject.csv"){
 # extract data
 extract_data_formatobject <- function(formatobject = formatobject("formatobject.csv"), column_name = "colors") {
   data <- formatobject[, column_name]
-  return(as.list(strsplit(data, ",")[[1]]))
-}
+  if(column_name == "colors"){
+    return(as.list(strsplit(data, ",")[[1]]))
+  }
+  else{
+    return(data)
+    }
 
+}
