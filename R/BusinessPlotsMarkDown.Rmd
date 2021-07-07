@@ -26,7 +26,7 @@ y_axis = "Quota"
 
 #Layout
 colors = c("#004D9A","#002142","#0069D2","#0180FF","#4FA7FF")
-Symbol = 1
+symbol = 8
 #0, square
 #1, circle
 #2, triangle point up
@@ -70,7 +70,7 @@ print(file_exists)
 
 ## Scatter Plot
 ```{r scatter, echo=FALSE}
-scatter(filepath, x_axis, y_axis, colors[1])
+scatter(filepath, x_axis, y_axis, symbol, colors[1], colors[2])
 ```
 
 ## Line Plot
