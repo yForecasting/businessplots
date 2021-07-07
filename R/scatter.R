@@ -23,10 +23,16 @@
 #'
 #'
 
-scatter <- function(file, x_column, y_column, symbol, primary_color, secondary_color){
+scatter <- function(file, x_column, y_column, symbol, auto_fit = TRUE, primary_color, secondary_color){
   df <- read.csv(file,header=TRUE,sep=';')
   if (substr(colnames(df)[1],2,3)== ".."){
     df <- read.csv(file,fileEncoding="UTF-8-BOM",header=TRUE,sep=';')
+  }
+  if(auto_fit){
+    ylim <- c(min(df[,y_column], na.rm=TRUE),max(df[,y_column], na.rm=TRUE))
+  }
+  else{
+    ylim <- c(0,max(df[,y_column], na.rm=TRUE))
   }
   names <- names(df)
   basic_palette <- "Paired"
@@ -34,6 +40,7 @@ scatter <- function(file, x_column, y_column, symbol, primary_color, secondary_c
   # todo detect sep automatically later ;/,/tab
   plot(x=df[,x_column], y=df[,y_column], pch = symbol, col = primary_color,
        col.axis = secondary_color, col.lab = secondary_color,
+       ylim = ylim,
     xlab=x_column , ylab = y_column
     )
 

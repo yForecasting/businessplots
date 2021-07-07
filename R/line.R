@@ -21,17 +21,23 @@
 #'
 #'
 
-line <- function(file, x_column, y_column, symbol, line_type, primary_color, secondary_color) {
+line <- function(file, x_column, y_column, symbol, line_type, auto_fit = TRUE, primary_color, secondary_color) {
   df <- read.csv(file,header=TRUE,sep=';')
   if (substr(colnames(df)[1],2,3)== ".."){
     df <- read.csv(file,fileEncoding="UTF-8-BOM",header=TRUE,sep=';')
+  }
+  if(auto_fit){
+    ylim <- c(min(df[,y_column], na.rm=TRUE),max(df[,y_column], na.rm=TRUE))
+  }
+  else{
+    ylim <- c(0,max(df[,y_column], na.rm=TRUE))
   }
   names <- names(df)
   basic_palette <- "Paired"
 
   # todo detect sep automatically later ;/,/tab
   plot(x=df[,x_column], y=df[,y_column], type = "b", lty=line_type, pch = symbol, col = primary_color,
-       col.axis = secondary_color, col.lab = secondary_color,
+       col.axis = secondary_color, col.lab = secondary_color, ylim = ylim,
        xlab=x_column , ylab = y_column
   )
 

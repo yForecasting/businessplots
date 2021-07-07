@@ -28,7 +28,7 @@ y_axis = "Quota"
 layout_file <- formatobject("./formatobject.csv")
 colors <- extract_data_formatobject(formatobject=layout_file, "colors")
 line_type <- extract_data_formatobject(formatobject=layout_file, "lineType")
-symbol = 19
+symbol =13
 #0, square
 #1, circle
 #2, triangle point up
@@ -74,25 +74,25 @@ print(file_exists)
 
 ## Scatter Plot
 ```{r scatter, echo=FALSE}
-scatter(filepath, x_axis, y_axis, symbol, colors[[1]], colors[[2]])
+scatter(filepath, x_axis, y_axis, symbol, FALSE, colors[[1]], colors[[2]])
 ```
 
 ## Line Plot
 ```{r line, echo=FALSE}
-line(filepath, x_axis, y_axis, symbol, line_type[[1]], colors[[1]], colors[[2]])
+line(filepath, x_axis, y_axis, symbol, line_type[[1]], FALSE, colors[[1]], colors[[2]])
 ```
 
 ## Horizontal Bar Plot
 ```{r horbar, echo=FALSE}
-bar(filepath, x_axis, y_axis ,TRUE, FALSE, colors[[1]])
+bar(filepath, x_axis, y_axis ,TRUE, FALSE, colors[[1]], colors[[2]], colors[[3]], colors[[4]], colors[[5]], colors[[6]])
 ```
 
 ## Vertical Bar Plot
 ```{r verbar, echo=FALSE}
-bar(filepath, x_axis, y_axis ,FALSE, FALSE, colors[[1]])
+bar(filepath, x_axis, y_axis ,FALSE, FALSE, colors[[1]], colors[[2]], colors[[3]], colors[[4]], colors[[5]], colors[[6]])
 ```
 
 ## Stacked Bar Plot
 ```{r stacked, echo=FALSE}
-bar(filepath, x_axis, y_axis ,FALSE, TRUE, colors[[1]])
+bar(filepath, x_axis, y_axis ,FALSE, TRUE, colors[[1]], colors[[2]], colors[[3]], colors[[4]], colors[[5]], colors[[6]])
 ```
