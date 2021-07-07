@@ -27,7 +27,7 @@ y_axis = "Quota"
 #Layout
 layout_file <- formatobject("./formatobject.csv")
 colors <- extract_data_formatobject(formatobject=layout_file, "colors")
-line_type = "solid"
+line_type <- extract_data_formatobject(formatobject=layout_file, "lineType")
 symbol = 19
 #0, square
 #1, circle
@@ -79,7 +79,7 @@ scatter(filepath, x_axis, y_axis, symbol, colors[[1]], colors[[2]])
 
 ## Line Plot
 ```{r line, echo=FALSE}
-line(filepath, x_axis, y_axis, symbol, line_type, colors[[1]], colors[[2]])
+line(filepath, x_axis, y_axis, symbol, line_type[[1]], colors[[1]], colors[[2]])
 ```
 
 ## Horizontal Bar Plot
