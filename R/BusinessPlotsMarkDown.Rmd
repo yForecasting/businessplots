@@ -31,10 +31,23 @@ print("File not found")
 print(file_exists)
 ```
 
-## File Check
-\textcolor{PrimaryColor}{PrimaryColor}
 
 ## Scatter Plot
 ```{r scatter, echo=FALSE}
 scatter(filepath, "Year","Quota", PrimaryColor)
+```
+
+## Line Plot
+```{r line, echo=FALSE}
+line(filepath, "Year","Quota", PrimaryColor, SecundaryColor)
+```
+
+## Horizontal Bar Plot
+```{r horbar, echo=FALSE}
+bar(filepath, "Year","Quota",TRUE, FALSE, PrimaryColor)
+```
+
+## Vertical Bar Plot
+```{r verbar, echo=FALSE}
+bar(filepath, "Year","Quota",FALSE, FALSE, PrimaryColor)
 ```
