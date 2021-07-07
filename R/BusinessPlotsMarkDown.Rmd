@@ -13,6 +13,10 @@ source("bp.R", local = knitr::knit_global())
 #Variable Declaration
 filepath = "./YearReport.csv"
 PrimaryColor = "#004D9A"
+SecundaryColor = "#002142"
+TertiaryColor = "#0069D2"
+QuaternaryColor = "#0180FF"
+QuinaryColor = "#4FA7FF"
 ```
 
 ## File Check
@@ -26,6 +30,9 @@ print("File not found")
 }
 print(file_exists)
 ```
+
+## File Check
+\textcolor{PrimaryColor}{PrimaryColor}
 
 ## Scatter Plot
 ```{r scatter, echo=FALSE}

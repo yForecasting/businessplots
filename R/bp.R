@@ -38,13 +38,13 @@ scatter <- function(file, x_column, y_column, PrimaryColor){
     )
 }
 
-bar <- function(file, x_column, y_column, horizontal = TRUE, Stacked = FALSE){
+bar <- function(file, x_column, y_column, horizontal = TRUE, Stacked = FALSE, PrimaryColor){
   df <- read.csv(file,header=TRUE,sep=';')
   if (substr(colnames(df)[1],2,3)== ".."){
     df <- read.csv(file,fileEncoding="UTF-8-BOM",header=TRUE,sep=';')
   }
   names <- names(df)
-  basic_color <- "#999999"
+  basic_color <- PrimaryColor
   basic_palette <- "Paired"
   pch <- 1
   if(Stacked){
@@ -71,15 +71,15 @@ bar <- function(file, x_column, y_column, horizontal = TRUE, Stacked = FALSE){
   }
 }
 
-line <- function(file, x_column, y_column){
+line <- function(file, x_column, y_column, PrimaryColor, SecundaryColor) {
   df <- read.csv(file,header=TRUE,sep=';')
   if (substr(colnames(df)[1],2,3)== ".."){
     df <- read.csv(file,fileEncoding="UTF-8-BOM",header=TRUE,sep=';')
   }
   names <- names(df)
-  basic_color <- "#999999"
+  basic_color <- PrimaryColor
   basic_palette <- "Paired"
-  color <- "red"
+  color <- SecundaryColor
   pch <- 1
 
   # todo detect sep automatically later ;/,/tab
