@@ -8,7 +8,14 @@ output: html_document
 ```{r setup, include=FALSE}
 #Import files
 knitr::opts_chunk$set(echo = TRUE)
-source("bp.R", local = knitr::knit_global())
+source("boxplot.R", local = knitr::knit_global())
+source("hist.R", local = knitr::knit_global())
+source("piechart.R", local = knitr::knit_global())
+source("gaugechart.R", local = knitr::knit_global())
+source("spiderchart.R", local = knitr::knit_global())
+source("bar.R", local = knitr::knit_global())
+source("line.R", local = knitr::knit_global())
+source("scatter.R", local = knitr::knit_global())
 
 #Variable Declaration
 
@@ -68,7 +75,7 @@ scatter(filepath, x_axis, y_axis, colors[1])
 
 ## Line Plot
 ```{r line, echo=FALSE}
-line(filepath, x_axis, y_axis, colors[1], colors[2])
+line(filepath, x_axis, y_axis, colors[1])
 ```
 
 ## Horizontal Bar Plot
