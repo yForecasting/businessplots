@@ -1,33 +1,44 @@
-#' generic businessplot function
+#' pie chart function
 #'
-#' Creates a general plot of the data.
+#' Creates a pie chart of the data.
 #'
-#' This function creates a plot based on the format of the data
-#' and this can be: scatterplot, lineplot or bar plot.
-#'
+#' This function creates a pie chart based on a column of a file with data.
 #'
 #' @param file A csv file with the source data
+#' @param pie_label Name of the column of the file with the labels of the pie chart
+#' @param pie_data_label Name of the column of the file with the data of the pie chart
+#' @param primary_color First color for pie chart
+#' @param secondary_color Second color for pie chart
+#' @param tertiary_color Third color for pie chart
+#' @param quaternary_color Fourth color for pie chart
+#' @param quinary_color Fifth color for pie chart
+#' @param senary_color Sixth color for pie chart
 #'
-#' @author Yves R. Sagaert
+#' @author Ruben Vanhecke
 #'
-#' at import forecast
-#' at import Mcomp
 #'
-#' @return A graphical plot
+#' @return A pie chart
 #' @export
 #'
 #' @examples
 #'   \dontrun{
-#'      bp("testdata.csv")
+#'      piechart("testdata.csv", "Year", "Quota", "#004D9A", "#002142", "#0069D2", "#0180FF", "#4FA7FF", "#A7D3FF")
 #'   }
 #'
 #'
 #'
 
 # plot pie chart
-piechart <- function(file, main_column){
+piechart <- function(file, pie_label, pie_data_label, primary_color, secondary_color, tertiary_color, quaternary_color, quinary_color, senary_color){
   # file is the file with all original data to read
-  # main_column is the name of the column with the column names of the pie chart
+  # pie_label is the name of the column of the file with the labels of the pie chart
+  # pie_data_label is the name of the column of the file with the data of the pie chart
+  # primary_color is first color for pie chart
+  # secondary_color is second color for pie chart
+  # tertiary_color is third color for pie chart
+  # quaternary_color is fourth color for pie chart
+  # quinary_color is fifth color for pie chart
+  # senary_color is sixth color for pie chart
 
   # read data
   data <- read.csv(file,header=TRUE,sep=';')
@@ -36,28 +47,15 @@ piechart <- function(file, main_column){
   }
 
   # set labels
-  labels <- names(data)[names(data) != main_column]
+  labels <- data[, pie_label]
 
   # set colors
-  colors <- c("red","orange","yellow","blue","green") # TODO: read from formatobject
+  colors <- c(primary_color, secondary_color, tertiary_color, quaternary_color, quinary_color, senary_color)
 
-  # set main values
-  main_values <- data[, main_column]
+  # set x for pie chart
+  x <- as.numeric(gsub(",", ".", data[, pie_data_label]))
 
-  # plot pie charts
-  for (main_value in main_values){
-
-    # set values for pie chart
-    values <- data[data[main_column] == main_value][names(data) != main_column]
-
-    # set x for pie chart
-    x <- as.numeric(gsub(",", ".", values))
-
-    # plot pie chart
-    pie(x=x, labels=labels, col=colors)
-  }
+  # plot pie
+  pie(x=x, labels=labels, col=colors)
 }
-
-
-
 
