@@ -18,11 +18,7 @@ x_axis = "Year"
 y_axis = "Quota"
 
 #Layout
-PrimaryColor = "#004D9A"
-SecundaryColor = "#002142"
-TertiaryColor = "#0069D2"
-QuaternaryColor = "#0180FF"
-QuinaryColor = "#4FA7FF"
+colors = c("#004D9A","#002142","#0069D2","#0180FF","#4FA7FF")
 Symbol = 1
 #0, square
 #1, circle
@@ -67,25 +63,25 @@ print(file_exists)
 
 ## Scatter Plot
 ```{r scatter, echo=FALSE}
-scatter(filepath, x_axis, y_axis, PrimaryColor)
+scatter(filepath, x_axis, y_axis, colors[1])
 ```
 
 ## Line Plot
 ```{r line, echo=FALSE}
-line(filepath, x_axis, y_axis, PrimaryColor, SecundaryColor)
+line(filepath, x_axis, y_axis, colors[1], colors[2])
 ```
 
 ## Horizontal Bar Plot
 ```{r horbar, echo=FALSE}
-bar(filepath, x_axis, y_axis ,TRUE, FALSE, PrimaryColor)
+bar(filepath, x_axis, y_axis ,TRUE, FALSE, colors[1])
 ```
 
 ## Vertical Bar Plot
 ```{r verbar, echo=FALSE}
-bar(filepath, x_axis, y_axis ,FALSE, FALSE, PrimaryColor)
+bar(filepath, x_axis, y_axis ,FALSE, FALSE, colors[1])
 ```
 
 ## Stacked Bar Plot
 ```{r stacked, echo=FALSE}
-bar(filepath, x_axis, y_axis ,FALSE, TRUE, PrimaryColor)
+bar(filepath, x_axis, y_axis ,FALSE, TRUE, colors[1])
 ```
