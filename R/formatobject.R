@@ -48,7 +48,7 @@ extract_data_formatobject <- function(formatobject = formatobject("formatobject.
 myObject <- formatobject() # no param = default "formatobject.csv"
 colors <- extract_data_formatobject(formatobject=myObject, "colors") # extract colors formatobject
 
-scatter <- function(file = "YearReport.csv", x_column = "Year", y_column = "Quota"){
+sample_scatter <- function(file = "YearReport.csv", x_column = "Year", y_column = "Quota"){
   df <- read.csv(file,header=TRUE,sep=';')
   if (substr(colnames(df)[1],2,3)== ".."){
     df <- read.csv(file,fileEncoding="UTF-8-BOM",header=TRUE,sep=';')
