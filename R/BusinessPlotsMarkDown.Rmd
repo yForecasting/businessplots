@@ -26,6 +26,7 @@ y_axis = "Quota"
 
 #Layout
 colors = c("#004D9A","#002142","#0069D2","#0180FF","#4FA7FF")
+line_type = "solid"
 symbol = 8
 #0, square
 #1, circle
@@ -53,6 +54,8 @@ symbol = 8
 #23, filled diamond 
 #24, filled triangle point-up 
 #25, filled triangle point down 
+
+
 ```
 
 ## File Check
@@ -75,7 +78,7 @@ scatter(filepath, x_axis, y_axis, symbol, colors[1], colors[2])
 
 ## Line Plot
 ```{r line, echo=FALSE}
-line(filepath, x_axis, y_axis, colors[1])
+line(filepath, x_axis, y_axis, symbol, line_type, colors[1], colors[2])
 ```
 
 ## Horizontal Bar Plot
