@@ -11,12 +11,45 @@ knitr::opts_chunk$set(echo = TRUE)
 source("bp.R", local = knitr::knit_global())
 
 #Variable Declaration
+
+#Data
 filepath = "./YearReport.csv"
+x_axis = "Year"
+y_axis = "Quota"
+
+#Layout
 PrimaryColor = "#004D9A"
 SecundaryColor = "#002142"
 TertiaryColor = "#0069D2"
 QuaternaryColor = "#0180FF"
 QuinaryColor = "#4FA7FF"
+Symbol = 1
+#0, square
+#1, circle
+#2, triangle point up
+#3, plus
+#4, cross
+#5, diamond
+#6, triangle point down
+#7, square cross
+#8, star
+#9, diamond plus
+#10, circle plus
+#11, triangles up and down
+#12, square plus
+#13, circle cross
+#14, square and triangle down
+#15, filled square
+#16, filled circle
+#17, filled triangle point-up
+#18, filled diamond
+#19, solid circle
+#20, bullet (smaller circle)
+#21, filled circle 
+#22, filled square 
+#23, filled diamond 
+#24, filled triangle point-up 
+#25, filled triangle point down 
 ```
 
 ## File Check
@@ -34,20 +67,25 @@ print(file_exists)
 
 ## Scatter Plot
 ```{r scatter, echo=FALSE}
-scatter(filepath, "Year","Quota", PrimaryColor)
+scatter(filepath, x_axis, y_axis, PrimaryColor)
 ```
 
 ## Line Plot
 ```{r line, echo=FALSE}
-line(filepath, "Year","Quota", PrimaryColor, SecundaryColor)
+line(filepath, x_axis, y_axis, PrimaryColor, SecundaryColor)
 ```
 
 ## Horizontal Bar Plot
 ```{r horbar, echo=FALSE}
-bar(filepath, "Year","Quota",TRUE, FALSE, PrimaryColor)
+bar(filepath, x_axis, y_axis ,TRUE, FALSE, PrimaryColor)
 ```
 
 ## Vertical Bar Plot
 ```{r verbar, echo=FALSE}
-bar(filepath, "Year","Quota",FALSE, FALSE, PrimaryColor)
+bar(filepath, x_axis, y_axis ,FALSE, FALSE, PrimaryColor)
+```
+
+## Stacked Bar Plot
+```{r stacked, echo=FALSE}
+bar(filepath, x_axis, y_axis ,FALSE, TRUE, PrimaryColor)
 ```

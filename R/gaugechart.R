@@ -1,33 +1,29 @@
-#' generic businessplot function
+#' gauge chart function
 #'
-#' Creates a general plot of the data.
+#' Creates a gauge chart of an integer or a numeric value.
 #'
-#' This function creates a plot based on the format of the data
-#' and this can be: scatterplot, lineplot or bar plot.
+#' This function creates a gauge chart based on an integer or a numeric value.
 #'
+#' @param gauge_value An integer or a numeric value
 #'
-#' @param file A csv file with the source data
+#' @author Ruben Vanhecke
 #'
-#' @author Yves R. Sagaert
+#' at import plotly
 #'
-#' at import forecast
-#' at import Mcomp
-#'
-#' @return A graphical plot
+#' @return A gauge chart
 #' @export
 #'
 #' @examples
 #'   \dontrun{
-#'      bp("testdata.csv")
+#'      gaugechart(25)
 #'   }
 #'
 #'
 #'
 
-# plot gauge chart (speedometer)
+# plot gauge chart
 gaugechart <- function(gauge_value){
-  # file is the file with all original data to read
-  # main_column is the name of the column with the column names of the pie chart
+  # gauge_value is an integer or a numeric value
 
   # library
   library(plotly)
