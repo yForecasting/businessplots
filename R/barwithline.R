@@ -24,7 +24,7 @@
 #'
 #' @examples
 #'   \dontrun{
-#'      multiline("testdata.csv", column_1 , c("column2", "column3", "column4"), 1, 1, "red","green","orange","yellow","blue","black")
+#'      barwithline("testdata.csv", column_1 , c("column2", "column3", "column4"), 1, 1, "red","green","orange","yellow","blue","black")
 #'   }
 #'
 #'
@@ -42,5 +42,6 @@ barwithline <- function(file, x_column, y_column, line_type, legend_pos, primary
               xlab = x_column, ylab = y_column, beside = TRUE, names.arg = df[, x_column],
               col.axis = secondary_color, col.lab = secondary_color
               )
-    lines(dfbar, df[, x_column], type="b")
+    lines(x = dfbar, y = df[, y_column]) 
+    points(x = dfbar, y = df[, y_column]) 
 }
