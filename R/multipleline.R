@@ -29,7 +29,7 @@
 #'
 #'
 
-multiline <- function(file, x_column, y_columns, symbol, line_type, primary_color,
+multiline <- function(file, x_column, y_columns, line_type, legend_pos, primary_color,
                       secondary_color, tertiary_color, quaternary_color, quinary_color, senary_color) {
   df <- read.csv(file,header=TRUE,sep=';')
   if (substr(colnames(df)[1],2,3)== ".."){
@@ -44,18 +44,24 @@ multiline <- function(file, x_column, y_columns, symbol, line_type, primary_colo
   color <- c(primary_color,
              secondary_color, tertiary_color, quaternary_color, quinary_color, senary_color)
   j<-1
+  i<-1
+  pchlist <- c(0,1,2,3,4,5,6,8,15,16,17,18)
   plot(1,type='n',xlim=c(min_x,max_x),ylim=c(min_y,max_y),col.axis = secondary_color, col.lab = secondary_color,
        xlab=x_column, ylab = "")
  for (column in y_columns){
    if(j>6){
      j<-1
    }
-    lines(df[,x_column], df[,column], type = "b", lty=line_type, pch = symbol, ylim = ylim,
+   if(i>12){
+     i<-1
+   }
+    lines(df[,x_column], df[,column], type = "b", lty=line_type, pch = pchlist[i], ylim = ylim,
           col = color[j])
+    i <- i+1
     j <- j+1
 
  }
-  legend("topleft", 0.92, legend=y_columns, col = color, pch=symbol, bty = "n",
+  legend(legend_pos, 0.92, legend=y_columns, col = color, pch=pchlist, bty = "n",
          lwd = 2, cex = 1.2,)
 
   #scale_linetype_manual(values=c("twodash", "dotted"))
