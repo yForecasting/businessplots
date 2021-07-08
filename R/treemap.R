@@ -25,7 +25,7 @@
 #'
 
 # plot a treemap
-create_treemap <- function(file, index, quantity) {
+create_treemap <- function(file, index, quantity, primary_color, secondary_color, tertiary_color, quaternary_color, quinary_color, senary_color) {
     # file is the file with all original data to read
     # index_columns are columns to group the tree
 
@@ -39,7 +39,8 @@ create_treemap <- function(file, index, quantity) {
     library(treemap)
     treemap(data,
             index=index,
-            vSize = quantity)
+            vSize = quantity,
+            palette =  c(primary_color, secondary_color, tertiary_color, quaternary_color, quinary_color, senary_color))
 
 
 

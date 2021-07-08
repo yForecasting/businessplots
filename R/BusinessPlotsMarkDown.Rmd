@@ -17,6 +17,8 @@ source("bar.R", local = knitr::knit_global())
 source("line.R", local = knitr::knit_global())
 source("scatter.R", local = knitr::knit_global())
 source("multipleline.R", local = knitr::knit_global())
+source("multiplescaleline.R", local = knitr::knit_global())
+source("treemap.R", local = knitr::knit_global())
 source("formatobject.R", local = knitr::knit_global())
 #Variable Declaration
 
@@ -24,6 +26,7 @@ source("formatobject.R", local = knitr::knit_global())
 filepath = "./YearReport.csv"
 x_axis = "Year"
 y_axis = "Quota"
+y_axes <- c("Quota","Incidents","Complatins")
 
 #Layout
 layout_file <- formatobject("./formatobject.csv")
@@ -118,6 +121,15 @@ gaugechart(25, 100, "indicator", "gauge+number", "Visitors inside", lwd*4, lwd/2
 
 ## Multiple lines
 ```{r multiline, echo=FALSE}
-y_axes <- c("Quota","Incidents","Complatins")
 multiline(filepath, x_axis , y_axes, line_type, legend_pos, colors[[1]], colors[[2]], colors[[3]], colors[[4]], colors[[5]], colors[[6]])
+```
+
+## Multiple scale lines
+```{r multiscaleline, echo=FALSE}
+multiscaleline(filepath, x_axis , y_axes, line_type, legend_pos, colors[[1]], colors[[2]], colors[[3]], colors[[4]], colors[[5]], colors[[6]])
+```
+
+## Treemap
+```{r treemap, echo=FALSE}
+create_treemap(filepath, x_axis , y_axis, colors[[1]], colors[[2]], colors[[3]], colors[[4]], colors[[5]], colors[[6]])
 ```
