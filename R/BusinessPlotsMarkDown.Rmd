@@ -107,3 +107,8 @@ piechart(filepath, x_axis, y_axis, colors[[1]], colors[[2]], colors[[3]], colors
 ```{r spiderchart, echo=FALSE}
 spiderchart(filepath, x_axis, y_axis, lwd, line_type, lwd/2, colors[[1]], colors[[2]], colors[[3]], colors[[4]])
 ```
+
+## gaugechart
+```{r gaugachart, echo=FALSE}
+gaugechart(25, 100, "indicator", "gauge+number", "Visitors inside", lwd*4, lwd/2, lwd/2, lwd, lwd/2, "Arial", colors[[1]], colors[[2]], colors[[3]], colors[[4]], colors[[5]], colors[[6]])
+```
