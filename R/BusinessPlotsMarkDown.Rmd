@@ -30,6 +30,7 @@ colors <- extract_data_formatobject(formatobject=layout_file, "colors")
 line_type <- extract_data_formatobject(formatobject=layout_file, "lineType")
 symbol <- extract_data_formatobject(formatobject=layout_file, "pointShape")
 auto_fit <- extract_data_formatobject(formatobject=layout_file, "autoFit")
+lwd <- extract_data_formatobject(formatobject=layout_file, "lineWidth")
 
 print(colors)
 #0, square
@@ -104,5 +105,5 @@ piechart(filepath, x_axis, y_axis, colors[[1]], colors[[2]], colors[[3]], colors
 
 ## Spiderchart
 ```{r spiderchart, echo=FALSE}
-spiderchart(filepath, x_axis, y_axis, 4, 2, 2, colors[[1]], colors[[2]], colors[[3]], colors[[4]])
+spiderchart(filepath, x_axis, y_axis, lwd, line_type, lwd/2, colors[[1]], colors[[2]], colors[[3]], colors[[4]])
 ```

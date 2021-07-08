@@ -1,4 +1,30 @@
-
+#' histogram plot function
+#'
+#' Creates a histogram of the data.
+#'
+#' This function creates a histogram plot based on a column of a file with data.
+#'
+#' @param file A csv file with the source data
+#' @param main_column Name of the column from the file you want to plot in the histogram
+#' @param show_normal_distribution Put True if you want to show the normal distribution on top of the histogram
+#' @param primary_color First color for bar plot
+#' @param secondary_color Second color for bar plot
+#' @param tertiary_color Third color for bar plot
+#' @param quaternary_color Fourth color for bar plot
+#' @param quinary_color Fifth color for bar plot
+#' @param senary_color Sixth color for bar plo
+#'
+#' @author Emiel Creus
+#'
+#'
+#' @return A histogram plot
+#' @export
+#'
+#' @examples
+#'   \dontrun{
+#'      histogram("testdata.csv", "column_1", TRUE, "#004D9A", "#002142", "#0069D2", "#0180FF","#004D9A", "#002142")
+#'   }
+#'
 histogram <- function(file, main_column, show_normal_distribution = FALSE, primary_color,
                       secondary_color, tertiary_color, quaternary_color, quinary_color, senary_color){
   df <- read.csv(file,header=TRUE,sep=';')

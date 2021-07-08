@@ -7,8 +7,16 @@
 #'
 #'
 #' @param file A csv file with the source data
-#' @param x_column a X as, _column a _ as, primaryColor, a primary color for the plot, secondaryColor, a secondary color for the plot
-#' @author Yves R. Sagaert
+#' @param x_column Name of the column from the file you want to plot on the x-axis
+#' @param y_column Name of the column from the file you want to plot on the y-axis
+#' @param symbol Number of the symbol you want for the plot
+#' @param line_type The type of line you want for the line plot
+#' @param auto_fit Put false to start from 0, True shows the best fit.
+#' @param primary_color First color for line plot
+#' @param secondary_color Second color for line plot
+
+#'
+#' @author Emiel Creus
 #'
 #'
 #' @return A line plot
@@ -16,7 +24,7 @@
 #'
 #' @examples
 #'   \dontrun{
-#'      line("testdata.csv")
+#'      line("testdata.csv", "column_1", "column_2", 5, 2, TRUE, "#004D9A", "#002142")
 #'   }
 #'
 #'

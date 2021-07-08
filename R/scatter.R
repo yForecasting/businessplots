@@ -1,4 +1,4 @@
-#'  scatter plot function
+#'  Scatter plot function
 #'
 #' Creates a scatter plot of the data.
 #'
@@ -6,19 +6,24 @@
 #'
 #'
 #'
-#' @param file A csv file with the source data, x_colom, a x as, Y_colum, a y as, primaryColor, a primary color for the plot
+#' @param file A csv file with the source data
+#' @param x_column Name of the column from the file you want to plot on the x-axis
+#' @param y_column Name of the column from the file you want to plot on the y-axis
+#' @param symbol number representing the symbol used for the scatter plot
+#' @param auto_fit Put false to start from 0, True shows the best fit.
+#' @param primary_color First color for bar plot
+#' @param secondary_color Second color for bar plot
 #'
-#' @author Yves R. Sagaert
+#' @author Emiel Creus
 #'
 #
-
 #'
-#' @return A graphical plot
+#' @return A scatter plot
 #' @export
 #'
 #' @examples
 #'   \dontrun{
-#'      scatter("testdata.csv")
+#'      scatter("testdata.csv", "column_1", "column2", 2, FALSE, "#004D9A", "#002142")
 #'   }
 #'
 #'

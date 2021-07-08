@@ -1,15 +1,22 @@
-#' function to plot bar plot
+#' bar plot function
 #'
 #' Creates a bar plot of the data.
 #'
-#' This function creates a plot based on the format of the data
+#' This function creates a bar plot based on two columns of a file with data.
 #'
+#' @param file A csv file with the source data
+#' @param x_column Name of the column from the file you want to plot on the x-axis
+#' @param y_column Name of the column from the file you want to plot on the y-axis
+#' @param horizontal Put True if you want to plot a horizontal bar plot, False for vertical plot.
+#' @param stacked Put True for a stacked plot, False for normal bar plot
+#' @param primary_color First color for bar plot
+#' @param secondary_color Second color for bar plot
+#' @param tertiary_color Third color for bar plot
+#' @param quaternary_color Fourth color for bar plot
+#' @param quinary_color Fifth color for bar plot
+#' @param senary_color Sixth color for bar plot
 #'
-#'
-#' @param file A csv file with the source data, x_column, y_column, horizontal, stacked and primary color to set the plot
-
-#'
-#' @author Yves R. Sagaert
+#' @author Emiel Creus
 #'
 #'
 #' @return A bar plot
@@ -17,10 +24,10 @@
 #'
 #' @examples
 #'   \dontrun{
-#'      bar("testdata.csv")
+#'      barplot("testdata.csv", "column_1", "column2", TRUE, FALSE, "#004D9A", "#002142", "#0069D2", "#0180FF","#004D9A", "#002142") )
 #'   }
 #'
-#'
+
 
 bar <- function(file, x_column, y_column, horizontal = TRUE, Stacked = FALSE,
                 primary_color, secondary_color, tertiary_color, quaternary_color, quinary_color, senary_color){
