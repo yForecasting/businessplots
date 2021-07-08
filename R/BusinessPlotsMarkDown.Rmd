@@ -98,4 +98,11 @@ boxplt(filepath, y_axis, symbol[[1]], TRUE, colors[[1]], colors[[2]], colors[[3]
 ```
 
 ## Piechart
+```{r piechart, echo=FALSE}
+piechart(filepath, x_axis, y_axis, colors[[1]], colors[[2]], colors[[3]], colors[[4]], colors[[5]], colors[[6]])
+```
 
+## Spiderchart
+```{r spiderchart, echo=FALSE}
+spiderchart(filepath, x_axis, y_axis, 4, 2, 2, colors[[1]], colors[[2]], colors[[3]], colors[[4]])
+```

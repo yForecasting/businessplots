@@ -7,13 +7,14 @@
 #' @param file A csv file with the source data
 #' @param spider_label Name of the column of the file with the labels of the spider chart
 #' @param spider_data_label Name of the column of the file with the data of the spider chart
+#' @param polygon_line_width Line width of the polygon
+#' @param net_line_type Net line type
+#' @param net_line_width Net width
 #' @param primary_color First color for spider chart
 #' @param secondary_color Second color for spider chart
 #' @param tertiary_color Third color for spider chart
 #' @param quaternary_color Fourth color for spider chart
-#' @param polygon_line_width Line width of the polygon
-#' @param net_line_type Net line type
-#' @param net_line_width Net width
+
 #'
 #' @author Ruben Vanhecke
 #'
@@ -24,15 +25,14 @@
 #'
 #' @examples
 #'   \dontrun{
-#'      spiderchart("testdata.csv", "Year", "Quota",  "#004D9A", "#002142", "#0069D2", "#0180FF", 4, 2, 2)
+#'      spiderchart("testdata.csv", "Year", "Quota", 4, 2, 2, "#004D9A", "#002142", "#0069D2", "#0180FF")
 #'   }
 #'
 #'
 #'
 
 # plot spider chart
-spiderchart <- function(file, spider_label, spider_data_label, primary_color, secondary_color, tertiary_color, quaternary_color,
-                        polygon_line_width, net_line_type, net_line_width){
+spiderchart <- function(file, spider_label, spider_data_label, polygon_line_width, net_line_type, net_line_width, primary_color, secondary_color, tertiary_color, quaternary_color){
   # file is a csv file with the source data
   # spider_label is the name of the column with the labels of the spider chart
   # spider_data_label is the name of the column with the data of the spider chart

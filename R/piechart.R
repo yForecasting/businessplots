@@ -56,6 +56,6 @@ piechart <- function(file, pie_label, pie_data_label, primary_color, secondary_c
   x <- as.numeric(gsub(",", ".", data[, pie_data_label]))
 
   # plot pie
-  pie(x=x, labels=labels, col=colors)
+  pie(x=x, labels=labels, col=colors, col.axis = secondary_color, col.lab = secondary_color)
 }
 
