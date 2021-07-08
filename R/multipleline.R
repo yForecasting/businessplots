@@ -19,37 +19,44 @@
 #' @author Emiel Creus
 #'
 #'
-#' @return A line plot
+#' @return A multiple line plot
 #' @export
 #'
 #' @examples
 #'   \dontrun{
-#'      line("testdata.csv", "column_1", "column_2", 5, 2, TRUE, "#004D9A", "#002142")
+#'      multiline("testdata.csv", column_1 , c("column2", "column3", "column4"), 1, 1, "red","green","orange","yellow","blue","black")
 #'   }
 #'
 #'
 
-multiline <- function(file, x_column, y_columns, symbol, line_type, auto_fit = TRUE, primary_color, secondary_color) {
+multiline <- function(file, x_column, y_columns, symbol, line_type, primary_color,
+                      secondary_color, tertiary_color, quaternary_color, quinary_color, senary_color) {
   df <- read.csv(file,header=TRUE,sep=';')
   if (substr(colnames(df)[1],2,3)== ".."){
     df <- read.csv(file,fileEncoding="UTF-8-BOM",header=TRUE,sep=';')
   }
-  if(auto_fit){
-    ylim <- c(min(df[,y_columns[1]], na.rm=TRUE),max(df[,y_column], na.rm=TRUE))
-  }
-  else{
-    ylim <- c(0,max(df[,y_columns[1]], na.rm=TRUE))
-  }
   names <- names(df)
   basic_palette <- "Paired"
-
-  # todo detect sep automatically later ;/,/tab
+  min_y <- min(df[,y_columns])
+  max_y <- max(df[,y_columns])
+  min_x <- min(df[,x_column])
+  max_x <- max(df[,x_column])
+  color <- c(primary_color,
+             secondary_color, tertiary_color, quaternary_color, quinary_color, senary_color)
+  j<-1
+  plot(1,type='n',xlim=c(min_x,max_x),ylim=c(min_y,max_y),col.axis = secondary_color, col.lab = secondary_color,
+       xlab=x_column, ylab = "")
  for (column in y_columns){
-    print(column)
-    lines(df[,x_column], df[,column], type = "b", lty=line_type, pch = symbol, col = primary_color,
-          col.axis = secondary_color, col.lab = secondary_color, ylim = ylim,
-          xlab=x_column , ylab = y_columns)
-  }
+   if(j>6){
+     j<-1
+   }
+    lines(df[,x_column], df[,column], type = "b", lty=line_type, pch = symbol, ylim = ylim,
+          col = color[j])
+    j <- j+1
+
+ }
+  legend("topleft", 0.92, legend=y_columns, col = color, pch=symbol, bty = "n",
+         lwd = 2, cex = 1.2,)
 
   #scale_linetype_manual(values=c("twodash", "dotted"))
 }

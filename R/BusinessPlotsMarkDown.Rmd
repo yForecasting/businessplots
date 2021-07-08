@@ -16,6 +16,7 @@ source("spiderchart.R", local = knitr::knit_global())
 source("bar.R", local = knitr::knit_global())
 source("line.R", local = knitr::knit_global())
 source("scatter.R", local = knitr::knit_global())
+source("multipleline.R", local = knitr::knit_global())
 source("formatobject.R", local = knitr::knit_global())
 #Variable Declaration
 
@@ -111,4 +112,10 @@ spiderchart(filepath, x_axis, y_axis, lwd, line_type, lwd/2, colors[[1]], colors
 ## gaugechart
 ```{r gaugachart, echo=FALSE}
 gaugechart(25, 100, "indicator", "gauge+number", "Visitors inside", lwd*4, lwd/2, lwd/2, lwd, lwd/2, "Arial", colors[[1]], colors[[2]], colors[[3]], colors[[4]], colors[[5]], colors[[6]])
+```
+
+## Multiple lines
+```{r multiline, echo=FALSE}
+y_axes <- c("Quota","Incidents","Complatins")
+multiline(filepath, x_axis , y_axes, symbol, line_type, colors[[1]], colors[[2]], colors[[3]], colors[[4]], colors[[5]], colors[[6]])
 ```
