@@ -25,17 +25,25 @@
 #'
 
 # plot a treemap
-treemap <- function(file, indexColums, quantity_column, titel) {
+create_treemap <- function(file, indexColums, quantity_column) {
     # file is the file with all original data to read
-    # main_column is the name of the column with the column names of the pie chart
+    # index_columns are columns to group the tree
+
     # read file
     data <- read.csv(file, header = TRUE, sep = ';')
+    if (substr(colnames(data)[1], 2, 3) == ".."){
+        df <- read.csv(data, fileEncoding = "UTF-8-BOM", header = TRUE, sep = ';')
+    }
+    # set index columns
+    index_values <- data[, indexColums]
+    # set quantity column
+    quantity_values <- data[, quantity_column]
+    print(quantity_values)    
     # library
     library(treemap)
     treemap(data,
-            index = indexColums,
-            vSize = quantity_column,
-            title = titel,
-            type = "index" #todo  generiek maken
-           )
+            index=index_values)
+            
+
+
 }
