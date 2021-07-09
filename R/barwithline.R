@@ -51,4 +51,5 @@ barwithline <- function(file, x_column, y_column, line_type, legend_pos, primary
 
     lines(x =  dfbar, y = df[, y_column])
     points(x =  dfbar, y = df[, y_column])
+    axis(4, ylim=c(min_y,max_y),lwd=2, col = secondary_color, col.axis = secondary_color)
 }
