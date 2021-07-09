@@ -48,7 +48,7 @@ dualaxes <- function(file, x_column, y_columns, line_type, legend_pos, primary_c
   line<-0
   line2<-2
   pchlist <- c(0,1,2,3,4,5,6,8,15,16,17,18)
-  par(mar=c(4, 4, 4, 6) + 0.1)
+  par(mar=c(4, 4, 4, 12) + 0.1)
   plot(df[,x_column], df[,y_columns[1]], ylim=c(0,max(df[,y_columns[1]])), xlab="", ylab="",
        type="l",lty=line_type, main="",lwd=2, col = color[j], col.axis = secondary_color, col.lab = secondary_color)
   axis(2, ylim=c(0,max(df[,y_columns[1]])),lwd=2,line=line, col = secondary_color, col.axis = secondary_color)
@@ -57,12 +57,10 @@ dualaxes <- function(file, x_column, y_columns, line_type, legend_pos, primary_c
   to <- length
   i <- i+1
   j <- j+1
-  line <- 2
-  y_columns_axes <- y_columns[-1]
-  y_data <- (df[,y_columns_axes])
-  min_y = min(y_data)
-  max_y = max(y_data)
-  for (column in y_columns_axes){
+  for (column in y_columns){
+    if(column == y_columns[1]){
+      next
+    }
     if(j>6){
       j<-1
     }
@@ -70,16 +68,16 @@ dualaxes <- function(file, x_column, y_columns, line_type, legend_pos, primary_c
       i<-1
     }
     par(new=T)
-    plot(df[,x_column], df[,column], axes=F, ylim=c(0,max_y), xlab="", ylab="",
+    plot(df[,x_column], df[,column], axes=F, ylim=c(0,max(df[,column])), xlab="", ylab="",
          type="l",lty=line_type, main="",lwd=2, col = color[j])
+    axis(4, ylim=c(0,max(df[,column])),lwd=2,line=line, col = secondary_color, col.axis = secondary_color)
     points(df[,x_column], df[,column],pch = pchlist[i], col = color[j])
-    mtext(4,text=column,line = line, col=secondary_color)
+    mtext(4,text=column,line=line2, col=secondary_color)
     i <- i+1
     j <- j+1
-    line <- line + 1
+    line <- line + 3.5
+    line2 <- line2 + 3.5
   }
-  axis(4, ylim=c(0,max(df[,column])),lwd=2, col = secondary_color, col.axis = secondary_color)
-
   legend(legend_pos, 0.92, legend=y_columns, col = color, pch=pchlist, bty = "n",
          lwd = 2, cex = 1.2,)
 
