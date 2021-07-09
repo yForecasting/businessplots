@@ -23,11 +23,11 @@
 #'
 #' @examples
 #'   \dontrun{
-#'      boxplt("testdata.csv", "column_1", 19, TRUE, "#004D9A", "#002142", "#0069D2", "#0180FF","#004D9A", "#002142") )
+#'      boxplt("testdata.csv", c("column_1","column, 19, TRUE, "#004D9A", "#002142", "#0069D2", "#0180FF","#004D9A", "#002142") )
 #'   }
 #'
 
-boxplt <- function(file, main_column, mean_dot_symbol, mean_dot = FALSE,  primary_color, secondary_color,
+boxplt <- function(file, columns, mean_dot_symbol, mean_dot = FALSE,  primary_color, secondary_color,
                    tertiary_color, quaternary_color, quinary_color, senary_color){
   df <- read.csv(file,header=TRUE,sep=';')
   if (substr(colnames(df)[1],2,3)== ".."){
@@ -36,11 +36,11 @@ boxplt <- function(file, main_column, mean_dot_symbol, mean_dot = FALSE,  primar
   names <- names(df)
   basic_color <- "#999999"
   basic_palette <- "Paired"
-
+  mean_dot_position <- 1
 
 
   # todo detect sep automatically later ;/,/tab
-  boxplot(x = df[,main_column], xlab=main_column, main = "",
+  boxplot(x = df[,columns], xlab="", main = "",
           col=primary_color,
           medcol=secondary_color,
           whiskcol=tertiary_color,
@@ -51,7 +51,11 @@ boxplt <- function(file, main_column, mean_dot_symbol, mean_dot = FALSE,  primar
           col.axis = secondary_color,
           col.lab = secondary_color)
   if(mean_dot){
-  points(mean(df[,main_column]), col = senary_color, pch=mean_dot_symbol)
+    for(column in columns){
+      points(x=mean_dot_position, y=mean(df[,column]), col = senary_color, pch=mean_dot_symbol)
+      mean_dot_position <- mean_dot_position + 1
+    }
+
   }
   #scale_linetype_manual(values=c("twodash", "dotted"))
 }
