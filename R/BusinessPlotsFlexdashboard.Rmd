@@ -27,12 +27,14 @@ source("treemap.R", local = knitr::knit_global())
 source("formatobject.R", local = knitr::knit_global())
 source("dualaxesline.R", local = knitr::knit_global())
 source("dualaxesscatter.R", local = knitr::knit_global())
+source("multiplescatter.R", local = knitr::knit_global())
 
 # data
 filepath = "./YearReport.csv"
 x_axis = "Year"
 y_axis = "Quota"
 y_axes <- c("Quota","Incidents","Complatins")
+plot_title = "Annual quota"
 
 # layout
 layout_file <- formatobject("./formatobject.csv")
@@ -122,8 +124,13 @@ Column {data-width=500}
 ----------------------------------------------------------------------
 
 ### Dual axes scatter plot
-```{r dual axes scatter plot, echo=FALSE}
+```{r dualaxesscatterplot, echo=FALSE}
 dualaxscatter(filepath, x_axis, y_axis, symbol[[1]], colors[[1]], colors[[2]], colors[[3]], colors[[4]], colors[[5]], colors[[6]])
+```
+
+### multiple Scatter plot
+```{r multiscatter, echo=FALSE}
+multiscatter(filepath, x_axis , y_axes, legend_pos, colors[[1]], colors[[2]], colors[[3]], colors[[4]], colors[[5]], colors[[6]])
 ```
 
 Distribution plots
@@ -134,16 +141,21 @@ Column {data-width=500}
 
 ### Piechart plot
 ```{r piechart, echo=FALSE}
-piechart(filepath, x_axis, y_axis, colors[[1]], colors[[2]], colors[[3]], colors[[4]], colors[[5]], colors[[6]])
+piechart(filepath, plot_title, x_axis, y_axis, colors[[1]], colors[[2]], colors[[3]], colors[[4]], colors[[5]], colors[[6]])
 ```
 
 ### Spiderchart plot
 ```{r spiderchart, echo=FALSE}
-spiderchart(filepath, x_axis, y_axis, lwd, line_type, lwd/2, colors[[1]], colors[[2]], colors[[3]], colors[[4]])
+spiderchart(filepath, x_axis, y_axis, plot_title, lwd, line_type, lwd/2, colors[[1]], colors[[2]], colors[[3]], colors[[4]])
 ```
 
 Column {data-width=500}
 ----------------------------------------------------------------------
+
+### Boxplot
+```{r boxplot, echo=FALSE}
+boxplt(filepath, y_axis, symbol[[1]], TRUE, colors[[1]], colors[[2]], colors[[3]], colors[[4]], colors[[5]], colors[[6]])
+```
 
 ### Treemap plot
 ```{r treemap, echo=FALSE}

@@ -5,6 +5,7 @@
 #' This function creates a pie chart based on a column of a file with data.
 #'
 #' @param file A csv file with the source data
+#' @param main Title of the pie chart
 #' @param pie_label Name of the column of the file with the labels of the pie chart
 #' @param pie_data_label Name of the column of the file with the data of the pie chart
 #' @param primary_color First color for pie chart
@@ -29,9 +30,10 @@
 #'
 
 # plot pie chart
-piechart <- function(file, pie_label, pie_data_label, primary_color, secondary_color, tertiary_color, quaternary_color, quinary_color, senary_color){
+piechart <- function(file, main, pie_label, pie_data_label, primary_color, secondary_color, tertiary_color, quaternary_color, quinary_color, senary_color){
   # file is the file with all original data to read
   # pie_label is the name of the column of the file with the labels of the pie chart
+  # main is the title of the pie chart
   # pie_data_label is the name of the column of the file with the data of the pie chart
   # primary_color is first color for pie chart
   # secondary_color is second color for pie chart
@@ -56,6 +58,6 @@ piechart <- function(file, pie_label, pie_data_label, primary_color, secondary_c
   x <- as.numeric(gsub(",", ".", data[, pie_data_label]))
 
   # plot pie
-  pie(x=x, labels=labels, col=colors, col.axis = secondary_color, col.lab = secondary_color)
+  pie(x=x, labels=labels, main=main, col=colors, col.axis = secondary_color, col.lab = secondary_color)
 }
 
