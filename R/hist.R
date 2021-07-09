@@ -33,7 +33,9 @@ histogram <- function(file, main_column, show_normal_distribution = FALSE, prima
   }
   names <- names(df)
   basic_palette <- "Paired"
-  normal_distribution_color <- rgb(0, 0, 255, max = 255, alpha = 100, names = "blue50")
+
+  # convert color to rgb for transparent background
+  rgb <- col2rgb(secondary_color)
 
 
 
@@ -49,7 +51,8 @@ histogram <- function(file, main_column, show_normal_distribution = FALSE, prima
   yfit <- yfit*diff(h$mids[1:2])*length(x)
   lines(xfit, yfit, col="Blue", lwd=2)
   polygon(c(xfit[xfit>=min(xfit)], max(xfit),
-            min(xfit)), c(yfit[xfit>=min(xfit)], 0, 0), col=normal_distribution_color)
+            min(xfit)), c(yfit[xfit>=min(xfit)], 0, 0),
+          col=rgb(rgb["red", ], rgb["green", ], rgb["blue", ], max = 255, alpha = 100, names = "blue50"))
 
 
   }
