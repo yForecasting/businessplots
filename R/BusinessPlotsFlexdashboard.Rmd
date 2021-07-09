@@ -145,7 +145,7 @@ piechart(filepath, x_axis, y_axis, colors[[1]], colors[[2]], colors[[3]], colors
 
 ### Spiderchart plot
 ```{r spiderchart, echo=FALSE}
-spiderchart(filepath, x_axis, y_axis, lwd, line_type, lwd/2, colors[[1]], colors[[2]], colors[[3]], colors[[4]])
+spiderchart(filepath, x_axis, y_axis, "Annual quota", lwd, line_type, lwd/2, colors[[1]], colors[[2]], colors[[3]], colors[[4]])
 ```
 
 Column {data-width=500}
