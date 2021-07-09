@@ -26,7 +26,7 @@
 #'
 #' @examples
 #'   \dontrun{
-#'      multiline("testdata.csv", column_1 , c("column2", "column3", "column4"), "topleft", "red","green","orange","yellow","blue","black")
+#'      multiscatter("testdata.csv", column_1 , c("column2", "column3", "column4"), "topleft", "red","green","orange","yellow","blue","black")
 #'   }
 #'
 #'

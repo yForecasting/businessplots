@@ -51,7 +51,7 @@ dualaxscatter <- function(file, x_column, y_columns, legend_pos, primary_color,
   line2<-2
   pchlist <- c(0,1,2,3,4,5,6,8,15,16,17,18)
   par(mar=c(4, 4, 4, 6) + 0.1)
-  plot(df[,x_column], df[,y_columns[1]], ylim=c(0,max(df[,y_columns[1]])), xlab="", ylab="",
+  plot(df[,x_column], df[,y_columns[1]], ylim=c(0,max(df[,y_columns[1]])), xlab=x_column, ylab="",
        main="", pch = pchlist[i], col = color[j], col.axis = secondary_color, col.lab = secondary_color)
   axis(2, ylim=c(0,max(df[,y_columns[1]])),lwd=2,line=line, col = secondary_color, col.axis = secondary_color)
   mtext(2,text=y_columns[1],line=line2, col=secondary_color)
