@@ -48,10 +48,19 @@ dualaxes <- function(file, x_column, y_columns, line_type, legend_pos, primary_c
   line<-0
   line2<-2
   pchlist <- c(0,1,2,3,4,5,6,8,15,16,17,18)
-  par(mar=c(5, 5, 4, 4) + 0.1)
-  plot(1,type='n',xlim=c(min_x,max_x),ylim=c(min_y,max_y), col.lab = secondary_color, col.axis = secondary_color,
-       xlab=x_column, ylab = "")
+  par(mar=c(4, 4, 4, 12) + 0.1)
+  plot(df[,x_column], df[,y_columns[1]], axes=F, ylim=c(0,max(df[,y_columns[1]])), xlab="", ylab="",
+       type="l",lty=line_type, main="",lwd=2, col = color[j])
+  axis(2, ylim=c(0,max(df[,y_columns[1]])),lwd=2,line=line, col = secondary_color, col.axis = secondary_color)
+  points(df[,x_column], df[,y_columns[1]],pch = pchlist[i], col = color[j])
+  mtext(2,text=y_columns[1],line=line2, col=secondary_color)
+  to <- length
+  i <- i+1
+  j <- j+1
   for (column in y_columns){
+    if(column == y_columns[1]){
+      next
+    }
     if(j>6){
       j<-1
     }
