@@ -1,0 +1,160 @@
+---
+title: "Business plots"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+Bar plots
+===
+
+```{r setup, include=FALSE}
+# library
+library(flexdashboard)
+
+# sources
+source("boxplot.R", local = knitr::knit_global())
+source("hist.R", local = knitr::knit_global())
+source("piechart.R", local = knitr::knit_global())
+source("gaugechart.R", local = knitr::knit_global())
+source("spiderchart.R", local = knitr::knit_global())
+source("bar.R", local = knitr::knit_global())
+source("line.R", local = knitr::knit_global())
+source("scatter.R", local = knitr::knit_global())
+source("multipleline.R", local = knitr::knit_global())
+source("multiplescaleline.R", local = knitr::knit_global())
+source("treemap.R", local = knitr::knit_global())
+source("formatobject.R", local = knitr::knit_global())
+source("dualaxesline.R", local = knitr::knit_global())
+source("dualaxesscatter.R", local = knitr::knit_global())
+
+# data
+filepath = "./YearReport.csv"
+x_axis = "Year"
+y_axis = "Quota"
+y_axes <- c("Quota","Incidents","Complatins")
+
+# layout
+layout_file <- formatobject("./formatobject.csv")
+colors <- extract_data_formatobject(formatobject=layout_file, "colors")
+line_type <- extract_data_formatobject(formatobject=layout_file, "lineType")
+symbol <- extract_data_formatobject(formatobject=layout_file, "pointShape")
+auto_fit <- extract_data_formatobject(formatobject=layout_file, "autoFit")
+lwd <- extract_data_formatobject(formatobject=layout_file, "lineWidth")
+legend_pos <- extract_data_formatobject(formatobject=layout_file, "legendPosition")
+```
+
+Column {data-width=500}
+-----------------------------------------------------------------------
+
+### Horizontal bar plot
+
+```{r horbar, echo=FALSE}
+bar(filepath, x_axis, y_axis ,TRUE, FALSE, colors[[1]], colors[[2]], colors[[3]], colors[[4]], colors[[5]], colors[[6]])
+```
+
+### Vertical bar plot
+
+```{r verbar, echo=FALSE}
+bar(filepath, x_axis, y_axis ,FALSE, FALSE, colors[[1]], colors[[2]], colors[[3]], colors[[4]], colors[[5]], colors[[6]])
+```
+
+Column {data-width=500}
+-----------------------------------------------------------------------
+
+### Stacked bar plot
+
+```{r stackedbar, echo=FALSE}
+bar(filepath, x_axis, y_axis ,FALSE, TRUE, colors[[1]], colors[[2]], colors[[3]], colors[[4]], colors[[5]], colors[[6]])
+```
+
+### Histogram
+```{r histogram, echo=FALSE}
+histogram(filepath, y_axis, TRUE, colors[[1]], colors[[2]], colors[[3]], colors[[4]], colors[[5]], colors[[6]])
+```
+
+Line plots
+===
+
+Column {data-width=500}
+-----------------------------------------------------------------------
+
+### Line plot
+
+```{r line, echo=FALSE}
+line(filepath, x_axis, y_axis, symbol[[1]], line_type[[1]], auto_fit, colors[[1]], colors[[2]])
+```
+
+### Multi line plot
+
+```{r multiline, echo=FALSE}
+multiline(filepath, x_axis , y_axes, legend_pos, colors[[1]], colors[[2]], colors[[3]], colors[[4]], colors[[5]], colors[[6]])
+```
+
+Column {data-width=500}
+-----------------------------------------------------------------------
+
+### Multi scale line plot
+
+```{r multiscaleline, echo=FALSE}
+multiscaleline(filepath, x_axis , y_axes, legend_pos, colors[[1]], colors[[2]], colors[[3]], colors[[4]], colors[[5]], colors[[6]])
+```
+
+### Dual axes plot
+
+```{r dualaxes, echo=FALSE}
+dualaxes(filepath, x_axis , y_axes, legend_pos, colors[[1]], colors[[2]], colors[[3]], colors[[4]], colors[[5]], colors[[6]])
+```
+
+Scatter plots
+===
+
+Column {data-width=500}
+----------------------------------------------------------------------
+
+### Scatter plot
+
+```{r scatter, echo=FALSE}
+scatter(filepath, x_axis, y_axis, symbol[[1]], auto_fit, colors[[1]], colors[[2]])
+```
+
+Column {data-width=500}
+----------------------------------------------------------------------
+
+### Dual axes scatter plot
+```{r dual axes scatter plot, echo=FALSE}
+dualaxscatter(filepath, x_axis, y_axis, symbol[[1]], colors[[1]], colors[[2]], colors[[3]], colors[[4]], colors[[5]], colors[[6]])
+```
+
+Distribution plots
+===
+
+Column {data-width=500}
+----------------------------------------------------------------------
+
+### Piechart plot
+```{r piechart, echo=FALSE}
+piechart(filepath, x_axis, y_axis, colors[[1]], colors[[2]], colors[[3]], colors[[4]], colors[[5]], colors[[6]])
+```
+
+### Spiderchart plot
+```{r spiderchart, echo=FALSE}
+spiderchart(filepath, x_axis, y_axis, lwd, line_type, lwd/2, colors[[1]], colors[[2]], colors[[3]], colors[[4]])
+```
+
+Column {data-width=500}
+----------------------------------------------------------------------
+
+### Treemap plot
+```{r treemap, echo=FALSE}
+create_treemap(filepath, x_axis , y_axis, colors[[1]], colors[[2]], colors[[3]], colors[[4]], colors[[5]], colors[[6]])
+```
+
+Extra plots
+===
+
+### Gaugechart warehouse
+```{r gaugachart1, echo=FALSE}
+gaugechart(69, 100, "indicator", "gauge+number", "Visitors inside", lwd*4, lwd/2, lwd/2, lwd, lwd/2, "Arial", colors[[1]], colors[[2]], colors[[3]], colors[[4]], colors[[5]], colors[[6]])
+```
+
