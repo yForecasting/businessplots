@@ -21,6 +21,8 @@ source("multiplescaleline.R", local = knitr::knit_global())
 source("treemap.R", local = knitr::knit_global())
 source("formatobject.R", local = knitr::knit_global())
 source("dualaxesline.R", local = knitr::knit_global())
+source("dualaxesscatter.R", local = knitr::knit_global())
+source("multiplescatter.R", local = knitr::knit_global())
 #Variable Declaration
 
 #Data
@@ -138,4 +140,14 @@ create_treemap(filepath, x_axis , y_axis, colors[[1]], colors[[2]], colors[[3]],
 ## Dual Axes
 ```{r dualaxes, echo=FALSE}
 dualaxes(filepath, x_axis , y_axes, line_type, legend_pos, colors[[1]], colors[[2]], colors[[3]], colors[[4]], colors[[5]], colors[[6]])
+```
+
+## Dual Ax Scatter plot
+```{r dualaxscatter, echo=FALSE}
+dualaxscatter(filepath, x_axis , y_axes, legend_pos, colors[[1]], colors[[2]], colors[[3]], colors[[4]], colors[[5]], colors[[6]])
+```
+
+## multiple Scatter plot
+```{r multiscatter, echo=FALSE}
+multiscatter(filepath, x_axis , y_axes, legend_pos, colors[[1]], colors[[2]], colors[[3]], colors[[4]], colors[[5]], colors[[6]])
 ```
