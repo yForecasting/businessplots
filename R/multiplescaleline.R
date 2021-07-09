@@ -37,8 +37,6 @@ multiscaleline <- function(file, x_column, y_columns, line_type, legend_pos, pri
   }
   names <- names(df)
   basic_palette <- "Paired"
-  min_y <- min(df[,y_columns])
-  max_y <- max(df[,y_columns])
   min_x <- min(df[,x_column])
   max_x <- max(df[,x_column])
   color <- c(primary_color,
