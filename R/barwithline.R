@@ -29,7 +29,7 @@
 #'
 #'
 
-barwithline <- function(file, x_column, y_column, line_type, legend_pos, primary_color,
+barwithline <- function(file, x_column, y_columns, line_type, legend_pos, primary_color,
                       secondary_color, tertiary_color, quaternary_color, quinary_color, senary_color) {
     df <- read.csv(file, header = TRUE, sep = ';')
     if (substr(colnames(df)[1], 2, 3) == "..") {
@@ -37,19 +37,19 @@ barwithline <- function(file, x_column, y_column, line_type, legend_pos, primary
     }
     names <- names(df)
     basic_palette <- "Paired"
-    dfbar <- barplot(height = as.matrix(df[, y_column]), col = c(primary_color, secondary_color, tertiary_color,
+
+    dfbar <- barplot(height = as.matrix(df[, y_columns[1]]), col = c(primary_color, secondary_color, tertiary_color,
                                                        quaternary_color, quinary_color, senary_color),
-              xlab = x_column, ylab = y_column, beside = TRUE, names.arg = df[, x_column],
+              xlab = x_column, ylab = y_columns[1], beside = TRUE, names.arg = df[, x_column],
               col.axis = secondary_color, col.lab = secondary_color
               )
-    min_y <- min(df[, y_column])
-    max_y <- max(df[, y_column])
-    ylim = c(min_y, max_y)
-    min_x <- min(df[, x_column])
-    max_x <- max(df[, x_column])
-    xlim = c(min_x, max_x)
+    line_columns <- y_columns[-1]
+    min_y <- min(df[, line_columns])
+    max_y <- max(df[, line_columns])
+    axis(4, ylim = c(min_y, max_y), lwd=2, col = secondary_color, col.axis = secondary_color)
 
-    lines(x =  dfbar, y = df[, y_column])
-    points(x =  dfbar, y = df[, y_column])
-    axis(4, ylim=c(min_y,max_y),lwd=2, col = secondary_color, col.axis = secondary_color)
+    for (column in line_columns){
+    lines(x =  dfbar, y = df[, column] , ylim=c(min_y, max_y))
+    points(x =  dfbar, y = df[, column] , ylim=c(min_y, max_y))
+    }
 }
