@@ -48,8 +48,7 @@ barwithline <- function(file, x_column, y_column, line_type, legend_pos, primary
     min_x <- min(df[, x_column])
     max_x <- max(df[, x_column])
     xlim = c(min_x, max_x)
-    
-    lines(x =  df[, x_column], y = df[, y_column])
-    lines(x = xlim)
-    points(x = xlim, y = ylim)
+
+    lines(x =  dfbar, y = df[, y_column])
+    points(x =  dfbar, y = df[, y_column])
 }
