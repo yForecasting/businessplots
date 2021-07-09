@@ -8,12 +8,14 @@
 #'
 #' @param file A csv file with the source data
 #' @param x_column Name of the column from the file you want to plot on the x-axis
-#' @param y_column Name of the column from the file you want to plot on the y-axis
-#' @param symbol Number of the symbol you want for the plot
-#' @param line_type The type of line you want for the line plot
-#' @param auto_fit Put false to start from 0, True shows the best fit.
+#' @param y_columns Name of the columns from the file you want to plot on the y-axes
+#' @param legend_pos the position of the legend
 #' @param primary_color First color for line plot
 #' @param secondary_color Second color for line plot
+#' @param tertiary_color Third color for line plot
+#' @param quaternary_color Fourth color for line plot
+#' @param quinary_color Fifth color for line plot
+#' @param senary_color Sixth color for line plot
 
 #'
 #' @author Emiel Creus
@@ -24,12 +26,12 @@
 #'
 #' @examples
 #'   \dontrun{
-#'      multiline("testdata.csv", column_1 , c("column2", "column3", "column4"), 1, 1, "red","green","orange","yellow","blue","black")
+#'      dualaxes("testdata.csv", column_1 , c("column2", "column3", "column4"), "topleft", "red","green","orange","yellow","blue","black")
 #'   }
 #'
 #'
 
-dualaxes <- function(file, x_column, y_columns, line_type, legend_pos, primary_color,
+dualaxes <- function(file, x_column, y_columns, legend_pos, primary_color,
                            secondary_color, tertiary_color, quaternary_color, quinary_color, senary_color) {
   df <- read.csv(file,header=TRUE,sep=';')
   if (substr(colnames(df)[1],2,3)== ".."){
@@ -48,19 +50,21 @@ dualaxes <- function(file, x_column, y_columns, line_type, legend_pos, primary_c
   line<-0
   line2<-2
   pchlist <- c(0,1,2,3,4,5,6,8,15,16,17,18)
-  par(mar=c(4, 4, 4, 12) + 0.1)
-  plot(df[,x_column], df[,y_columns[1]], axes=F, ylim=c(0,max(df[,y_columns[1]])), xlab="", ylab="",
-       type="l",lty=line_type, main="",lwd=2, col = color[j])
+  par(mar=c(4, 4, 4, 6) + 0.1)
+  plot(df[,x_column], df[,y_columns[1]], ylim=c(0,max(df[,y_columns[1]])), xlab="", ylab="",
+       type="l",lty=line_type, main="",lwd=2, col = color[j], col.axis = secondary_color, col.lab = secondary_color)
   axis(2, ylim=c(0,max(df[,y_columns[1]])),lwd=2,line=line, col = secondary_color, col.axis = secondary_color)
   points(df[,x_column], df[,y_columns[1]],pch = pchlist[i], col = color[j])
   mtext(2,text=y_columns[1],line=line2, col=secondary_color)
   to <- length
   i <- i+1
   j <- j+1
-  for (column in y_columns){
-    if(column == y_columns[1]){
-      next
-    }
+  line <- 2
+  y_columns_axes <- y_columns[-1]
+  y_data <- (df[,y_columns_axes])
+  min_y = min(y_data)
+  max_y = max(y_data)
+  for (column in y_columns_axes){
     if(j>6){
       j<-1
     }
@@ -68,16 +72,16 @@ dualaxes <- function(file, x_column, y_columns, line_type, legend_pos, primary_c
       i<-1
     }
     par(new=T)
-    plot(df[,x_column], df[,column], axes=F, ylim=c(0,max(df[,column])), xlab="", ylab="",
+    plot(df[,x_column], df[,column], axes=F, ylim=c(0,max_y), xlab="", ylab="",
          type="l",lty=line_type, main="",lwd=2, col = color[j])
-    axis(4, ylim=c(0,max(df[,column])),lwd=2,line=line, col = secondary_color, col.axis = secondary_color)
     points(df[,x_column], df[,column],pch = pchlist[i], col = color[j])
-    mtext(4,text=column,line=line2, col=secondary_color)
+    mtext(4,text=column,line = line, col=secondary_color)
     i <- i+1
     j <- j+1
-    line <- line + 3.5
-    line2 <- line2 + 3.5
+    line <- line + 1
   }
+  axis(4, ylim=c(0,max(df[,column])),lwd=2, col = secondary_color, col.axis = secondary_color)
+
   legend(legend_pos, 0.92, legend=y_columns, col = color, pch=pchlist, bty = "n",
          lwd = 2, cex = 1.2,)
 

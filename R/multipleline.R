@@ -8,12 +8,14 @@
 #'
 #' @param file A csv file with the source data
 #' @param x_column Name of the column from the file you want to plot on the x-axis
-#' @param y_column Name of the column from the file you want to plot on the y-axis
-#' @param symbol Number of the symbol you want for the plot
-#' @param line_type The type of line you want for the line plot
-#' @param auto_fit Put false to start from 0, True shows the best fit.
+#' @param y_column Name of the columns from the file you want to plot on the y-axes
+#' @param legend_pos the position of the legend
 #' @param primary_color First color for line plot
 #' @param secondary_color Second color for line plot
+#' @param tertiary_color Third color for line plot
+#' @param quaternary_color Fourth color for line plot
+#' @param quinary_color Fifth color for line plot
+#' @param senary_color Sixth color for line plot
 
 #'
 #' @author Emiel Creus
@@ -24,12 +26,12 @@
 #'
 #' @examples
 #'   \dontrun{
-#'      multiline("testdata.csv", column_1 , c("column2", "column3", "column4"), 1, 1, "red","green","orange","yellow","blue","black")
+#'      multiline("testdata.csv", column_1 , c("column2", "column3", "column4"), "topleft", "red","green","orange","yellow","blue","black")
 #'   }
 #'
 #'
 
-multiline <- function(file, x_column, y_columns, line_type, legend_pos, primary_color,
+multiline <- function(file, x_column, y_columns, legend_pos, primary_color,
                       secondary_color, tertiary_color, quaternary_color, quinary_color, senary_color) {
   df <- read.csv(file,header=TRUE,sep=';')
   if (substr(colnames(df)[1],2,3)== ".."){
@@ -43,10 +45,11 @@ multiline <- function(file, x_column, y_columns, line_type, legend_pos, primary_
   max_x <- max(df[,x_column])
   color <- c(primary_color,
              secondary_color, tertiary_color, quaternary_color, quinary_color, senary_color)
+  y_lim <- c(min_y,max_y)
   j<-1
   i<-1
   pchlist <- c(0,1,2,3,4,5,6,8,15,16,17,18)
-  plot(1,type='n',xlim=c(min_x,max_x),ylim=c(min_y,max_y),col.axis = secondary_color, col.lab = secondary_color,
+  plot(1,type='n',xlim=c(min_x,max_x),ylim=y_lim,col.axis = secondary_color, col.lab = secondary_color,
        xlab=x_column, ylab = "")
  for (column in y_columns){
    if(j>6){
@@ -55,7 +58,7 @@ multiline <- function(file, x_column, y_columns, line_type, legend_pos, primary_
    if(i>12){
      i<-1
    }
-    lines(df[,x_column], df[,column], type = "b", lty=line_type, pch = pchlist[i], ylim = ylim,
+    lines(df[,x_column], df[,column], type = "b", lty=line_type, pch = pchlist[i], ylim = y_lim,
           col = color[j])
     i <- i+1
     j <- j+1

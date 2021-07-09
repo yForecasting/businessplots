@@ -7,6 +7,7 @@
 #' @param file A csv file with the source data
 #' @param spider_label Name of the column of the file with the labels of the spider chart
 #' @param spider_data_label Name of the column of the file with the data of the spider chart
+#' @param title Title of the spider chart
 #' @param polygon_line_width Line width of the polygon
 #' @param net_line_type Net line type
 #' @param net_line_width Net width
@@ -14,7 +15,6 @@
 #' @param secondary_color Second color for spider chart
 #' @param tertiary_color Third color for spider chart
 #' @param quaternary_color Fourth color for spider chart
-
 #'
 #' @author Ruben Vanhecke
 #'
@@ -25,17 +25,18 @@
 #'
 #' @examples
 #'   \dontrun{
-#'      spiderchart("testdata.csv", "Year", "Quota", 4, 2, 2, "#004D9A", "#002142", "#0069D2", "#0180FF")
+#'      spiderchart("testdata.csv", "Year", "Quota", "Annual quota", 4, 2, 2, "#004D9A", "#002142", "#0069D2", "#0180FF")
 #'   }
 #'
 #'
 #'
 
 # plot spider chart
-spiderchart <- function(file, spider_label, spider_data_label, polygon_line_width, net_line_type, net_line_width, primary_color, secondary_color, tertiary_color, quaternary_color){
+spiderchart <- function(file, spider_label, spider_data_label, title, polygon_line_width, net_line_type, net_line_width, primary_color, secondary_color, tertiary_color, quaternary_color){
   # file is a csv file with the source data
   # spider_label is the name of the column with the labels of the spider chart
   # spider_data_label is the name of the column with the data of the spider chart
+  # title is the title of the spider chart
   # primary_color is first color for pie chart
   # secondary_color is second color for pie chart
   # tertiary_color is third color for pie chart
@@ -76,7 +77,10 @@ spiderchart <- function(file, spider_label, spider_data_label, polygon_line_widt
   # add max value and min value to spider chart
   spider_data <- rbind(rep(max_spider_data, min_spider_data) , rep(0, min_spider_data) , spider_data)
 
+  # convert color to rgb for transparent background
+  rgb <- col2rgb(secondary_color)
+
   # plot spider chart
-  radarchart(spider_data, pcol=primary_color, pfcol=secondary_color, cglcol=tertiary_color, axislabcol=quaternary_color,
-             plwd=polygon_line_width, cglty=net_line_type, cglwd=net_line_width)
+  radarchart(spider_data, pcol=primary_color, pfcol=rgb(rgb["red", ], rgb["green", ], rgb["blue", ], max = 255, alpha = 100, names = "blue50"), cglcol=tertiary_color, axislabcol=quaternary_color,
+             plwd=polygon_line_width, cglty=net_line_type, cglwd=net_line_width, title=title)
 }
