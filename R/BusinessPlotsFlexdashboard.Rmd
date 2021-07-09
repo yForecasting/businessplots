@@ -51,13 +51,13 @@ Column {data-width=500}
 
 ### Horizontal bar plot
 
-```{r horbar, echo=FALSE}
+```{r horbar, fig.height=7.5, fig.width=17, echo=FALSE}
 bar(filepath, x_axis, y_axis ,TRUE, FALSE, colors[[1]], colors[[2]], colors[[3]], colors[[4]], colors[[5]], colors[[6]])
 ```
 
 ### Vertical bar plot
 
-```{r verbar, echo=FALSE}
+```{r verbar, fig.height=7.5, fig.width=17, echo=FALSE}
 bar(filepath, x_axis, y_axis ,FALSE, FALSE, colors[[1]], colors[[2]], colors[[3]], colors[[4]], colors[[5]], colors[[6]])
 ```
 
@@ -66,12 +66,12 @@ Column {data-width=500}
 
 ### Stacked bar plot
 
-```{r stackedbar, echo=FALSE}
+```{r stackedbar, fig.height=7.5, fig.width=17, echo=FALSE}
 bar(filepath, x_axis, y_axis ,FALSE, TRUE, colors[[1]], colors[[2]], colors[[3]], colors[[4]], colors[[5]], colors[[6]])
 ```
 
 ### Histogram
-```{r histogram, echo=FALSE}
+```{r histogram, fig.height=7.5, fig.width=17, echo=FALSE}
 histogram(filepath, y_axis, TRUE, colors[[1]], colors[[2]], colors[[3]], colors[[4]], colors[[5]], colors[[6]])
 ```
 
@@ -83,13 +83,13 @@ Column {data-width=500}
 
 ### Line plot
 
-```{r line, echo=FALSE}
+```{r line, fig.height=7.5, fig.width=17, echo=FALSE}
 line(filepath, x_axis, y_axis, symbol[[1]], line_type[[1]], auto_fit, colors[[1]], colors[[2]])
 ```
 
 ### Multi line plot
 
-```{r multiline, echo=FALSE}
+```{r multiline, fig.height=7.5, fig.width=17, echo=FALSE}
 multiline(filepath, x_axis , y_axes, legend_pos, colors[[1]], colors[[2]], colors[[3]], colors[[4]], colors[[5]], colors[[6]])
 ```
 
@@ -98,13 +98,13 @@ Column {data-width=500}
 
 ### Multi scale line plot
 
-```{r multiscaleline, echo=FALSE}
-multiscaleline(filepath, x_axis , y_axes, legend_pos, colors[[1]], colors[[2]], colors[[3]], colors[[4]], colors[[5]], colors[[6]])
+```{r multiscaleline, fig.height=7.5, fig.width=17, echo=FALSE}
+#multiscaleline(filepath, x_axis , y_axes, legend_pos, colors[[1]], colors[[2]], colors[[3]], colors[[4]], colors[[5]], colors[[6]])
 ```
 
 ### Dual axes plot
 
-```{r dualaxes, echo=FALSE}
+```{r dualaxes, fig.height=7.5, fig.width=17, echo=FALSE}
 dualaxes(filepath, x_axis , y_axes, legend_pos, colors[[1]], colors[[2]], colors[[3]], colors[[4]], colors[[5]], colors[[6]])
 ```
 
@@ -116,7 +116,7 @@ Column {data-width=500}
 
 ### Scatter plot
 
-```{r scatter, echo=FALSE}
+```{r scatter, fig.height=7.5, fig.width=17, echo=FALSE}
 scatter(filepath, x_axis, y_axis, symbol[[1]], auto_fit, colors[[1]], colors[[2]])
 ```
 
@@ -124,12 +124,12 @@ Column {data-width=500}
 ----------------------------------------------------------------------
 
 ### Dual axes scatter plot
-```{r dualaxesscatterplot, echo=FALSE}
+```{r dualaxesscatterplot, fig.height=7.5, fig.width=17, echo=FALSE}
 dualaxscatter(filepath, x_axis, y_axis, symbol[[1]], colors[[1]], colors[[2]], colors[[3]], colors[[4]], colors[[5]], colors[[6]])
 ```
 
 ### multiple Scatter plot
-```{r multiscatter, echo=FALSE}
+```{r multiscatter, fig.height=7.5, fig.width=17, echo=FALSE}
 multiscatter(filepath, x_axis , y_axes, legend_pos, colors[[1]], colors[[2]], colors[[3]], colors[[4]], colors[[5]], colors[[6]])
 ```
 
@@ -140,12 +140,12 @@ Column {data-width=500}
 ----------------------------------------------------------------------
 
 ### Piechart plot
-```{r piechart, echo=FALSE}
+```{r piechart, fig.height=7.5, fig.width=17, echo=FALSE}
 piechart(filepath, plot_title, x_axis, y_axis, colors[[1]], colors[[2]], colors[[3]], colors[[4]], colors[[5]], colors[[6]])
 ```
 
 ### Spiderchart plot
-```{r spiderchart, echo=FALSE}
+```{r spiderchart, fig.height=7.5, fig.width=17, echo=FALSE}
 spiderchart(filepath, x_axis, y_axis, plot_title, lwd, line_type, lwd/2, colors[[1]], colors[[2]], colors[[3]], colors[[4]])
 ```
 
@@ -153,12 +153,12 @@ Column {data-width=500}
 ----------------------------------------------------------------------
 
 ### Boxplot
-```{r boxplot, echo=FALSE}
+```{r boxplot, fig.height=7.5, fig.width=17, echo=FALSE}
 boxplt(filepath, y_axes, symbol[[1]], TRUE, colors[[1]], colors[[2]], colors[[3]], colors[[4]], colors[[5]], colors[[6]])
 ```
 
 ### Treemap plot
-```{r treemap, echo=FALSE}
+```{r treemap, fig.height=7.5, fig.width=17, echo=FALSE}
 create_treemap(filepath, x_axis , y_axis, colors[[1]], colors[[2]], colors[[3]], colors[[4]], colors[[5]], colors[[6]])
 ```
 
