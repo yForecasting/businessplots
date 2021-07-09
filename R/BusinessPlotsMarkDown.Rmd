@@ -124,12 +124,12 @@ gaugechart(25, 100, "indicator", "gauge+number", "Visitors inside", lwd*4, lwd/2
 
 ## Multiple lines
 ```{r multiline, echo=FALSE}
-multiline(filepath, x_axis , y_axes, line_type, legend_pos, colors[[1]], colors[[2]], colors[[3]], colors[[4]], colors[[5]], colors[[6]])
+multiline(filepath, x_axis , y_axes, legend_pos, colors[[1]], colors[[2]], colors[[3]], colors[[4]], colors[[5]], colors[[6]])
 ```
 
 ## Multiple scale lines
 ```{r multiscaleline, echo=FALSE}
-multiscaleline(filepath, x_axis , y_axes, line_type, legend_pos, colors[[1]], colors[[2]], colors[[3]], colors[[4]], colors[[5]], colors[[6]])
+multiscaleline(filepath, x_axis , y_axes, legend_pos, colors[[1]], colors[[2]], colors[[3]], colors[[4]], colors[[5]], colors[[6]])
 ```
 
 ## Treemap
@@ -139,7 +139,7 @@ create_treemap(filepath, x_axis , y_axis, colors[[1]], colors[[2]], colors[[3]],
 
 ## Dual Axes
 ```{r dualaxes, echo=FALSE}
-dualaxes(filepath, x_axis , y_axes, line_type, legend_pos, colors[[1]], colors[[2]], colors[[3]], colors[[4]], colors[[5]], colors[[6]])
+dualaxes(filepath, x_axis , y_axes, legend_pos, colors[[1]], colors[[2]], colors[[3]], colors[[4]], colors[[5]], colors[[6]])
 ```
 
 ## Dual Ax Scatter plot

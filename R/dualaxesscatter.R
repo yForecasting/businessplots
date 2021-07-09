@@ -8,10 +8,14 @@
 #'
 #' @param file A csv file with the source data
 #' @param x_column Name of the column from the file you want to plot on the x-axis
-#' @param y_column Name of the column from the file you want to plot on the y-axis
-#' @param auto_fit Put false to start from 0, True shows the best fit.
-#' @param primary_color First color for line plot
-#' @param secondary_color Second color for line plot
+#' @param y_columns Name of the columns from the file you want to plot on the y-axes
+#' @param legend_pos the position of the legend
+#' @param primary_color First color for scatter plot
+#' @param secondary_color Second color for scatter plot
+#' @param tertiary_color Third color for scatter plot
+#' @param quaternary_color Fourth color for scatter plot
+#' @param quinary_color Fifth color for scatter plot
+#' @param senary_color Sixth color for scatter plot
 
 #'
 #' @author Emiel Creus
