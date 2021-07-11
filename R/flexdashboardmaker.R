@@ -41,11 +41,13 @@ flexdashboardmaker <- function(){
   if (file.exists(flexdashboard_file)){
     # flexdashboard file already exists
     reassure <- readline(prompt="This flexdashboard already exists, overwrite??? (y/n): ")
+    reassure <- tolower(reassure)
   } else{
     # flexdashboard file does not exist
     reassure <- "y"
   }
 
+  # File can be written
   if (reassure == "y"){
 
     # Make the file
@@ -68,12 +70,6 @@ flexdashboardmaker <- function(){
 
     # create list of sources
     list_sources = list()
-
-    # create list of function headers
-    list_func_headers = list()
-
-    # create list of r functions
-    list_r_func = list()
 
     # create list of functions
     list_func = list()
@@ -114,72 +110,60 @@ flexdashboardmaker <- function(){
           break
         }
 
-        # ARGUMENT 3: r func
-        r_func <- readline(prompt=paste0("R name of func ", ifunc," (e.g. plot) // type 0 to stop): "))
+        # check for empty value
+        if (func != ""){
+          # set arg count
+          iarg = 1
 
-        # check for more functions
-        if (r_func == 0){
-          # no more functions incoming
-          break
-        }
+          # create list of args
+          list_arg = list()
 
-        # ARGUMENT 4: header above func
-        func_header <- readline(prompt=paste0("Header above func ", ifunc," (e.g. Horizontal bar) // type 0 to stop): "))
+          # while more_args, keep adding new args
+          more_args = 1
 
-        # check for more functions
-        if (func_header == 0){
-          # no more functions incoming
-          break
-        }
+          # add args
+          while (more_args != 0){
 
-        # set arg count
-        iarg = 1
+            # ARGUMENT 3: arg
+            arg <- readline(prompt=paste0("Enter the arg ", iarg," (e.g. title='My title') // type 0 to stop): "))
 
-        # create list of args
-        list_arg = list()
+            # check for more args
+            if (arg == 0){
+              # no more args incoming
+              break
+            }
 
-        # while more_args, keep adding new args
-        more_args = 1
+            # check for empty value
+            if (arg != "") {
+              # add arg to list of args
+              list_arg <- c(list_arg, arg)
 
-        # add args
-        while (more_args != 0){
-
-          # ARGUMENT 5: arg
-          arg <- readline(prompt=paste0("Enter the arg ", iarg," (e.g. title='My title') // type 0 to stop): "))
-
-          # check for more args
-          if (arg == 0){
-            # no more args incoming
-            break
+              # End loop - keep counter
+              iarg <- iarg + 1
+            } else {
+              # empty value
+              print("Arg can not be empty. Please enter a value.")
+            }
           }
 
-          # add arg to list of args
-          list_arg <- c(list_arg, arg)
+          # prepare arg(s) to add to function
+          func_arg <- paste(unlist(list_arg), collapse=', ')
 
-          # End loop - keep counter
-          iarg <- iarg + 1
+          # add arg(s) to function
+          func <- paste0(func, "(", func_arg, ")")
+
+          # add function (with arg(s)) to list of functions
+          list_func <- c(list_func, func)
+
+          # end loop - keep counter
+          ifunc <- ifunc + 1
+        } else {
+          # empty value
+          print("Function can not be empty. Please enter a value.")
         }
-
-        # add header function to list of function headers
-        list_func_headers <- c(list_func_headers, func_header)
-
-        # add r name function to list of r name functions
-        list_r_func <- c(list_r_func, r_func)
-
-        # prepare arg(s) to add to function
-        func_arg <- paste(unlist(list_arg), collapse=', ')
-
-        # add arg(s) to function
-        func <- paste0(func, "(", func_arg, ")")
-
-        # add function (with arg(s)) to list of functions
-        list_func <- c(list_func, func)
-
-        # End loop - keep counter
-        ifunc <- ifunc + 1
       }
 
-      # End loop - keep counter (for prompt arg2=)
+      # end loop - keep counter (for prompt arg2=)
       isource <- isource + 1
     }
 
@@ -189,47 +173,119 @@ flexdashboardmaker <- function(){
     # max plots each tab
     max_plots_tab = 4
 
-    # dataframe to save plots for each tab
-    plots = data.frame(tab1=character(1), tab2=character(1), tab3=character(1))
-    plots_df_names = names(plots)
+    # list of names of tabs
+    list_tabs = list()
 
+    # list of selected plots
+    list_plots = list()
+
+    # create list of function headers
+    list_func_headers = list()
+
+    # create list of r functions
+    list_r_func = list()
+
+    # current tab
     itab = 1
 
+    # prepare tabs for creation
     while (amount_tabs != 0){
-      name_tab <- readline(prompt=paste0("Name for tab ", itab, ": "))
+      # read name tab
+      name_tab <- readline(prompt=paste0("Name for tab ", itab, " // type 0 to stop: "))
 
+      # check for more tabs
+      if (name_tab == 0) {
+        # no more tabs incoming
+        break
+      }
+
+      # add name of tab to list
+      list_tabs <- c(list_tabs, name_tab)
+
+      # print available plots
       print("Available plots:")
       print(list_func)
 
+      # amount of chosen plots for tab
       amount_plots_tab = 0
-      chosen_plot_list = list()
 
+      # list of chosen plots for tab
+      list_chosen_plots = list()
+
+      # list of entered function headers
+      list_entered_func_headers = list()
+
+      # list of entered r functions
+      list_entered_r_func = list()
+
+      # set number of function
+      ifunc <- 1
+
+      # choose plots for tab
       while (amount_plots_tab < 4){
-        chosen_plot <- readline(prompt=paste0("Enter number of plot for tab ", name_tab," (", max_plots_tab - amount_plots_tab,
+        # index of chosen plot for tab
+        chosen_plot <- readline(prompt=paste0("Enter index of plot for tab ", name_tab," (", max_plots_tab - amount_plots_tab,
                                               " plots remaining for ", name_tab, ") // type 0 to stop: "))
 
-        chosen_plot = strtoi(chosen_plot)
-
+        # check for more plots for tab
         if (chosen_plot == 0) {
+          # no more plots incoming
           break
         }
 
-        if (chosen_plot > 0 && chosen_plot <= length(list_func)){
-          chosen_plot_list <- c(chosen_plot_list, list_func[[chosen_plot]])
-          amount_plots_tab <- amount_plots_tab + 1
-        } else {
-          print("Invalid number.")
-        }
+        # check for empty value
+        if (chosen_plot != "") {
+          # convert index to integer
+          chosen_plot = strtoi(chosen_plot)
 
-        amount_plots_tab <- amount_plots_tab + 1
+          # check valid index
+          if (chosen_plot > 0 && chosen_plot <= length(list_func)){
+            # valid index
+            # ARGUMENT 4: header above func
+            func_header <- readline(prompt=paste0("Header above func ", ifunc," (e.g. Horizontal bar): "))
+
+            # ARGUMENT 5: r func
+            r_func <- readline(prompt=paste0("R name of func ", ifunc," (e.g. plot): "))
+
+            # add chosen plots to list
+            list_chosen_plots <- c(list_chosen_plots, list_func[[chosen_plot]])
+
+            # add entered function headers to list
+            list_entered_func_headers <- c(list_entered_func_headers, func_header)
+
+            # add entered r functions to list
+            list_entered_r_func <- c(list_entered_r_func, r_func)
+
+            # decrease available amount of plots for tab
+            amount_plots_tab <- amount_plots_tab + 1
+
+            # increase number of func
+            ifunc <- ifunc + 1
+          } else {
+            # invalid index
+            print("Invalid index. Please enter a valid index")
+          }
+        } else {
+          # empty value
+          print("Index can not be empty. Please enter a valid index")
+        }
       }
 
-      plots[, plots_df_names[itab]] <- unlist(chosen_plot_list)
+      # add chosen plots to list of plots
+      list_plots[[length(list_plots)+1]] <- list_chosen_plots
+
+      # add function headers to list of function headers
+      list_func_headers[[length(list_func_headers)+1]] <- list_entered_func_headers
+
+      # add r function to list of r functions
+      list_r_func[[length(list_r_func)+1]] <- list_entered_r_func
+
+      # decrease tabs to prepare for creation
       amount_tabs <- amount_tabs - 1
+
+      # increase done tabs
       itab <- itab + 1
     }
-
-    print(plots)
 
     #write to file
     sink(flexdashboard_file) # open file
@@ -240,11 +296,11 @@ flexdashboardmaker <- function(){
     # write info
     cat("---")
     cat(paste0('\ntitle: "', title, '"'))
-    cat(paste0('\nauthor: "', author, '"'))
-    cat("\noutput:\n")
-    cat("\tflexdashboard::flex_dashboard:")
-    cat(paste0("\n\t\torientation: ", orientation))
-    cat(paste0("\n\t\tvertical_layout: ", vertical_layout))
+    cat(paste0('\nauthor: "', author, '"\n'))
+    cat("output:\n")
+    cat("  flexdashboard::flex_dashboard:\n") # \t can not be used
+    cat(paste0("    orientation: ", orientation, "\n")) # \t can not be used
+    cat(paste0("    vertical_layout: ", vertical_layout)) # \t can not be used
     cat("\n---\n\n")
 
     # write setup
@@ -256,11 +312,19 @@ flexdashboardmaker <- function(){
     cat(paste0(ticks, "\n\n"))
 
     # write functions with args
-    for (i in 1:length(list_func)){
-      cat(paste0("### ", func_header, "\n"))
-      cat(paste0(ticks, "{r ", list_r_func[[i]][1], ", echo=FALSE}\n"))
-      cat(paste0(list_func[[i]][1], "\n"))
-      cat(paste0(ticks, "\n\n"))
+    for (i in 1:length(list_plots)){
+      cat(paste0(list_tabs[i], "\n"))
+      cat("===\n\n")
+      for (j in 1:length(list_plots[[i]])){
+        if (j %% 2 == 1){
+          cat("Column {data-width=500}\n")
+          cat("-----------------------------------------------------------------------\n\n")
+        }
+        cat(paste0("### ", list_func_headers[[i]][j], "\n"))
+        cat(paste0(ticks, "{r ", list_r_func[[i]][j], ", echo=FALSE}\n"))
+        cat(paste0(list_plots[[i]][j], "\n"))
+        cat(paste0(ticks, "\n\n"))
+      }
     }
 
     # close file
