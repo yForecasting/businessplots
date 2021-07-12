@@ -21,10 +21,10 @@ markdownmaker <- function(){
   original_wd <- getwd()
 
   # read name of markdown
-  markdown_name = readline(prompt = "File name (e.g. funmaker): ")
+  markdown_name = readline(prompt = "File name (e.g. markdownmaker): ")
   while (markdown_name == ""){
     print("File name can not be empty. Please enter a name.")
-    markdown_name <- readline(prompt = "File name (e.g. funmaker): ")
+    markdown_name <- readline(prompt = "File name (e.g. markdownmaker): ")
     if (markdown_name != ""){
 
       # valid file name
@@ -69,7 +69,7 @@ markdownmaker <- function(){
     title = readline(prompt="Title (e.g. funmaker): ")
     while (title == ""){
       print("Title can not be empty. Please enter a title.")
-      title <- readline(prompt="Title: ")
+      title <- readline(prompt="Title (e.g. funmaker): ")
       if (title != ""){
 
         # valid title
@@ -141,7 +141,9 @@ markdownmaker <- function(){
       while (source == ""){
         print("Source can not be empty. Please enter a source.")
         source <- readline(prompt=paste0("Name of source file ", isource," (e.g. hist) // type 0 to stop: "))
-        if (output != ""){
+        if (source != ""){
+
+          # valid source
           break;
         }
       }
@@ -172,7 +174,9 @@ markdownmaker <- function(){
         while (func == ""){
           print("Function can not be empty. Please enter a function.")
           func <- readline(prompt=paste0("Name of function ", ifunc," (e.g. plot) // type 0 to stop: "))
-          if (output != ""){
+          if (func != ""){
+
+            # valid func
             break;
           }
         }
@@ -191,7 +195,9 @@ markdownmaker <- function(){
         while (r_func == ""){
           print("R name of function can not be empty. Please enter a function.")
           r_func <- readline(prompt=paste0("R name of function ", ifunc," (e.g. plot): "))
-          if (output != ""){
+          if (r_func != ""){
+
+            # valid r name of function
             break;
           }
         }
@@ -204,6 +210,8 @@ markdownmaker <- function(){
           print("Header can not be empty. Please enter a header.")
           func_header <- readline(prompt=paste0("Header above function ", ifunc," (e.g. Horizontal bar): "))
           if (func_header != ""){
+
+            # valid header
             break;
           }
         }
@@ -228,6 +236,8 @@ markdownmaker <- function(){
             print("Argument can not be empty. Please enter an argument.")
             arg <- readline(prompt=paste0("Enter argument ", iarg," (e.g. filepath) // type 0 to stop: "))
             if (arg != ""){
+
+              # valid argument
               break;
             }
           }
