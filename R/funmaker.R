@@ -80,8 +80,11 @@ funmaker <- function(){
     # set argument count
     iarg = 1
 
-    # create list of arguments without default values
+    # create list of arguments
     list_arg = list()
+
+    # create list of names of arguments
+    list_arg_names = list()
 
     # create list of explanation or arguments
     list_explain_arg = list()
@@ -116,20 +119,7 @@ funmaker <- function(){
         break
       }
 
-      # check if "=" is present in argument
-      if ("=" %in% arg) {
-
-        # split parts of argument in strings
-        s <- strsplit(arg,"=")
-
-        # append string split to list
-        list_arg <- c(list_arg, trimws(s[[1]][1]))
-        arg <- paste0(trimws(s[[1]][1]), " = ", trimws(s[[1]][2]))
-
-      } else {
-        arg <- trimws(arg)
-        list_arg <- c(list_arg, arg)
-      }
+      list_arg <- c(list_arg, arg)
 
       # ARGUMENT 2: description
       description <- readline(prompt=paste0("Description of argument ", iarg, ": "))
@@ -189,19 +179,10 @@ funmaker <- function(){
     }
 
     # define return value
-    return_value = readline(prompt="Return: ")
-    while (return_value == ""){
-      print("Return value can not be empty. Please enter a return value.")
-      return_value <- readline(prompt="Return: ")
-      if (return_value != ""){
-
-        # valid return value
-        break
-      }
-    }
+    return_value = readline(prompt="Return (leave blank for no return value): ")
 
     # define export value
-    export_value = readline(prompt="Export: ")
+    export_value = readline(prompt="Export (leave blank for no export value): ")
 
     # write to file
     sink(fun_file) # open file
@@ -211,35 +192,37 @@ funmaker <- function(){
     empty_comment <- paste0(comment, "\n")
 
     # write title
-    cat(paste0(comment, title, "\n", empty_comment))
+    cat(paste0(comment, title, "\n"))
 
     # write short description
-    cat(paste0(comment, short_description, "\n", empty_comment))
+    cat(paste0(empty_comment, comment, short_description, "\n"))
 
     # write long description
-    cat(paste0(comment, long_description, "\n", empty_comment))
+    cat(paste0(empty_comment, comment, long_description, "\n"))
 
     # write arguments
     if (length(list_arg) > 0){
+      cat(empty_comment)
       for (i in 1:length(list_arg)){
-        cat(paste0(comment, "@param ", list_arg[[i]][1], " ", list_explain_arg[[i]][1], "\n"))
+        cat(paste0(comment, "@param ", noquote(trimws(strsplit(list_arg[[i]][1],"=")[[1]][1])), " ", list_explain_arg[[i]][1], "\n"))
       }
     }
 
-    # write comments
-    cat(empty_comment)
-
     # write author
-    cat(paste0(comment, "@author ", author, "\n", empty_comment))
+    cat(paste0(empty_comment, comment, "@author ", author, "\n", empty_comment))
 
     # write return
-    cat(paste0(comment, "@return ", return_value, "\n", empty_comment))
+    if (return_value != ""){
+      cat(paste0(comment, "@return ", return_value, "\n", empty_comment))
+    }
 
     # write export
-    cat(paste0(comment, "@export ", export_value, "\n", empty_comment, "\n"))
+    if (export_value != ""){
+      cat(paste0(comment, "@export ", export_value, "\n", empty_comment))
+    }
 
     # write functions
-    cat(paste0(fun_name," <- function(", paste(unlist(list_arg), collapse=', '), ") {\n", "\n", "}\n"))
+    cat(paste0("\n", fun_name," <- function(", paste(unlist(list_arg), collapse=', '), ") {\n", "\n", "}\n"))
 
     sink() # close file
     # Alternative code:
