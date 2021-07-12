@@ -14,6 +14,7 @@
 #'
 #'
 
+# create flexdashboard automatically.
 flexdashboardmaker <- function(){
 
   # set current wd
@@ -47,10 +48,10 @@ flexdashboardmaker <- function(){
     reassure <- "y"
   }
 
-  # File can be written
+  # file can be written
   if (reassure == "y"){
 
-    # Make the file
+    # make the file
     file.create(flexdashboard_file)
 
     # define title
@@ -95,7 +96,7 @@ flexdashboardmaker <- function(){
       # set func count
       ifunc = 1
 
-      # while more_sources, keep adding new sources
+      # while more sources, keep adding new sources
       more_func = 1
 
       # add sources
@@ -112,58 +113,58 @@ flexdashboardmaker <- function(){
 
         # check for empty value
         if (func != ""){
-          # set arg count
+          # set argument count
           iarg = 1
 
-          # create list of args
+          # create list of arguments
           list_arg = list()
 
-          # while more_args, keep adding new args
+          # while more arguments, keep adding new arguments
           more_args = 1
 
-          # add args
+          # add arguments
           while (more_args != 0){
 
-            # ARGUMENT 3: arg
-            arg <- readline(prompt=paste0("Enter the arg ", iarg," (e.g. title='My title') // type 0 to stop): "))
+            # ARGUMENT 3: argument
+            arg <- readline(prompt=paste0("Enter the argument ", iarg," (e.g. filepath) // type 0 to stop): "))
 
-            # check for more args
+            # check for more arguments
             if (arg == 0){
-              # no more args incoming
+              # no more arguments incoming
               break
             }
 
             # check for empty value
             if (arg != "") {
-              # add arg to list of args
+              # add argument to list of arguments
               list_arg <- c(list_arg, arg)
 
-              # End loop - keep counter
+              # end loop - keep counter
               iarg <- iarg + 1
             } else {
               # empty value
-              print("Arg can not be empty. Please enter a value.")
+              print("Argument can not be empty. Please enter an argument")
             }
           }
 
-          # prepare arg(s) to add to function
+          # prepare argument(s) to add to function
           func_arg <- paste(unlist(list_arg), collapse=', ')
 
-          # add arg(s) to function
+          # add argument(s) to function
           func <- paste0(func, "(", func_arg, ")")
 
-          # add function (with arg(s)) to list of functions
+          # add function (with argument(s)) to list of functions
           list_func <- c(list_func, func)
 
           # end loop - keep counter
           ifunc <- ifunc + 1
         } else {
           # empty value
-          print("Function can not be empty. Please enter a value.")
+          print("Function can not be empty. Please enter a function")
         }
       }
 
-      # end loop - keep counter (for prompt arg2=)
+      # end loop - keep counter
       isource <- isource + 1
     }
 
@@ -179,10 +180,10 @@ flexdashboardmaker <- function(){
     # list of selected plots
     list_plots = list()
 
-    # create list of function headers
+    # list of function headers
     list_func_headers = list()
 
-    # create list of r functions
+    # list of r functions
     list_r_func = list()
 
     # current tab
@@ -241,11 +242,11 @@ flexdashboardmaker <- function(){
           # check valid index
           if (chosen_plot > 0 && chosen_plot <= length(list_func)){
             # valid index
-            # ARGUMENT 4: header above func
-            func_header <- readline(prompt=paste0("Header above func ", ifunc," (e.g. Horizontal bar): "))
+            # ARGUMENT 4: header above function
+            func_header <- readline(prompt=paste0("Header above function ", ifunc," (e.g. Horizontal bar): "))
 
-            # ARGUMENT 5: r func
-            r_func <- readline(prompt=paste0("R name of func ", ifunc," (e.g. plot): "))
+            # ARGUMENT 5: r function
+            r_func <- readline(prompt=paste0("R name of function ", ifunc," (e.g. plot): "))
 
             # add chosen plots to list
             list_chosen_plots <- c(list_chosen_plots, list_func[[chosen_plot]])
@@ -259,7 +260,7 @@ flexdashboardmaker <- function(){
             # decrease available amount of plots for tab
             amount_plots_tab <- amount_plots_tab + 1
 
-            # increase number of func
+            # increase number of functions
             ifunc <- ifunc + 1
           } else {
             # invalid index
@@ -287,7 +288,7 @@ flexdashboardmaker <- function(){
       itab <- itab + 1
     }
 
-    #write to file
+    # write to file
     sink(flexdashboard_file) # open file
 
     # set ticks
@@ -311,7 +312,7 @@ flexdashboardmaker <- function(){
     }
     cat(paste0(ticks, "\n\n"))
 
-    # write functions with args
+    # write functions with arguments
     for (i in 1:length(list_plots)){
       cat(paste0(list_tabs[i], "\n"))
       cat("===\n\n")
