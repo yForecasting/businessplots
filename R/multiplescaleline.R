@@ -42,6 +42,8 @@ multiscaleline <- function(file, x_column, y_columns, legend_pos, primary_color,
   basic_palette <- "Paired"
   min_x <- min(df[,x_column])
   max_x <- max(df[,x_column])
+  min_y <- min(df[,y_columns])
+  max_y <- max(df[,y_columns])
   color <- c(primary_color,
              secondary_color, tertiary_color, quaternary_color, quinary_color, senary_color)
   j<-1

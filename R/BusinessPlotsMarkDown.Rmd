@@ -156,5 +156,7 @@ multiscatter(filepath, x_axis , y_axes, legend_pos, colors[[1]], colors[[2]], co
 
 ## Bar with line plot
 ```{r barwithline, echo=FALSE}
+y_axes = c("Quota","Complatins")
+
 barwithline(filepath, x_axis , y_axes, line_type, legend_pos, colors[[1]], colors[[2]], colors[[3]], colors[[4]], colors[[5]], colors[[6]])
 ```
