@@ -23,7 +23,7 @@
 #'
 #' @examples
 #'   \dontrun{
-#'      boxplt("testdata.csv", c("column_1","column, 19, TRUE, "#004D9A", "#002142", "#0069D2", "#0180FF","#004D9A", "#002142") )
+#'      boxplt("testdata.csv", c("column_1","column_2"), 19, TRUE, "#004D9A", "#002142", "#0069D2", "#0180FF","#004D9A", "#002142") )
 #'   }
 #'
 

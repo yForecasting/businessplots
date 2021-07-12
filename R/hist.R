@@ -56,7 +56,7 @@ histogram <- function(file, main_column, show_normal_distribution = FALSE, prima
 
 
   }
-  # todo
+  # TODO SHOW distribution in line plot
   #scale_linetype_manual(values=c("twodash", "dotted"))
 }
 
