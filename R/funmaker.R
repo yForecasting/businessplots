@@ -181,8 +181,8 @@ funmaker <- function(){
     # define return value
     return_value = readline(prompt="Return (leave blank for no return value): ")
 
-    # define export value
-    export_value = readline(prompt="Export (leave blank for no export value): ")
+    # disable/enable export
+    enable_export = tolower(readline(prompt="Export? (y/n): "))
 
     # write to file
     sink(fun_file) # open file
@@ -217,8 +217,8 @@ funmaker <- function(){
     }
 
     # write export
-    if (export_value != ""){
-      cat(paste0(comment, "@export ", export_value, "\n", empty_comment))
+    if (enable_export == "y"){
+      cat(paste0(comment, "@export\n", empty_comment))
     }
 
     # write functions
