@@ -21,7 +21,16 @@ flexdashboardmaker <- function(){
   original_wd <- getwd()
 
   # read name of flexdashboard
-  flexdashboard <- readline(prompt = "File flexdashboard: ")
+  flexdashboard_name <- readline(prompt = "File name flexdashboard (e.g. flexdashboardmaker): ")
+  while (flexdashboard_name == ""){
+    print("File name can not be empty. Please enter a name.")
+    flexdashboard_name <- readline(prompt = "File name flexdashboard (e.g. flexdashboardmaker): ")
+    if (flexdashboard_name != ""){
+
+      # valid file name
+      break
+    }
+  }
 
   # print wd flexdashboard
   print(paste("Flexdashboard will be made in: ", original_wd))
@@ -35,7 +44,7 @@ flexdashboardmaker <- function(){
   setwd(target_wd)
 
   # create flexdashboard file name
-  flexdashboard_file <- paste0(flexdashboard, ".Rmd")
+  flexdashboard_file <- paste0(flexdashboard_name, ".Rmd")
   reassure <- "n"
 
   # check if flexdashboard file already exists
@@ -57,16 +66,52 @@ flexdashboardmaker <- function(){
     file.create(flexdashboard_file)
 
     # define title
-    title = readline(prompt="Title: ")
+    title = readline(prompt="Title (e.g. flexdashboard): ")
+    while (title == ""){
+      print("File name can not be empty. Please enter a name.")
+      title <- readline(prompt="Title (e.g. flexdashboard): ")
+      if (title != ""){
+
+        # valid title
+        break
+      }
+    }
 
     # define author
-    author = readline(prompt="Author(s): ")
+    author = readline(prompt="Author(s) (e.g. John Doe): ")
+    while (author == ""){
+      print("Author can not be empty. Please enter an author.")
+      author <- readline(prompt="Author(s) (e.g. John Doe): ")
+      if (author != ""){
 
-    # define output
-    orientation = readline(prompt="Orientation: ")
+        # valid author
+        break
+      }
+    }
 
-    # define output
-    vertical_layout = readline(prompt="Vertical layout: ")
+    # define orientation
+    orientation = readline(prompt="Orientation (e.g. fill): ")
+    while (orientation == ""){
+      print("Orientation can not be empty. Please enter an orientation.")
+      orientation <- readline(prompt="Orientation (e.g. fill): ")
+      if (orientation != ""){
+
+        # valid orientation
+        break
+      }
+    }
+
+    # define vertical layout
+    vertical_layout = readline(prompt="Vertical layout (e.g. columns): ")
+    while (vertical_layout == ""){
+      print("Vertical layout can not be empty. Please enter a vertical layout.")
+      vertical_layout <- readline(prompt="Vertical layout (e.g. columns): ")
+      if (vertical_layout != ""){
+
+        # valid vertical layout
+        break
+      }
+    }
 
     # set source count
     isource = 1
@@ -87,99 +132,108 @@ flexdashboardmaker <- function(){
       source <- readline(prompt=paste0("Name of source file ", isource," (e.g. hist) // type 0 to stop: "))
 
       # check for empty source
-      if (source != ""){
+      while (source == ""){
+        print("Source can not be empty. Please enter a source.")
+        source <- readline(prompt=paste0("Name of source file ", isource," (e.g. hist) // type 0 to stop: "))
+        if (source != ""){
 
-        # check for more sources
-        if (source == 0){
-          # no more sources incoming
+          # valid source
           break
         }
+      }
 
-        # add source to list of sources
-        list_sources <- c(list_sources, source)
+      # check for more sources
+      if (source == 0){
+        # no more sources incoming
+        break
+      }
 
-        # set function count
-        ifunc = 1
+      # add source to list of sources
+      list_sources <- c(list_sources, source)
 
-        # while more functions, keep adding new functions
-        more_func = 1
+      # set function count
+      ifunc = 1
 
-        # add functions
-        while (more_func != 0){
+      # while more functions, keep adding new functions
+      more_func = 1
 
-          # ARGUMENT 2: func
+      # add functions
+      while (more_func != 0){
+
+        # ARGUMENT 2: func
+        func <- readline(prompt=paste0("Name of func ", ifunc," (e.g. plot) // type 0 to stop: "))
+
+        # check for empty function
+        while (func == ""){
+          print("Function can not be empty. Please enter a function.")
           func <- readline(prompt=paste0("Name of func ", ifunc," (e.g. plot) // type 0 to stop: "))
-
-          # check for empty function
           if (func != ""){
 
-            # check for more functions
-            if (func == 0){
-              # no more functions incoming
-              break
-            }
-
-            # set argument count
-            iarg = 1
-
-            # create list of arguments
-            list_arg = list()
-
-            # while more arguments, keep adding new arguments
-            more_args = 1
-
-            # add arguments
-            while (more_args != 0){
-
-              # ARGUMENT 3: arg
-              arg <- readline(prompt=paste0("Enter argument ", iarg," (e.g. filepath) // type 0 to stop: "))
-
-              # check for empty argument
-              if (arg != "") {
-
-                # check for more arguments
-                if (arg == 0){
-                  # no more arguments incoming
-                  break
-                }
-
-                # add argument to list of arguments
-                list_arg <- c(list_arg, arg)
-
-                # end loop - keep counter
-                iarg <- iarg + 1
-              } else {
-
-                # empty argument
-                print("Argument can not be empty. Please enter an argument")
-              }
-            }
-
-            # prepare argument(s) to add to function
-            func_arg <- paste(unlist(list_arg), collapse=', ')
-
-            # add argument(s) to function
-            func <- paste0(func, "(", func_arg, ")")
-
-            # add function (with argument(s)) to list of functions
-            list_func <- c(list_func, func)
-
-            # end loop - keep counter
-            ifunc <- ifunc + 1
-          } else {
-
-            # empty function
-            print("Function can not be empty. Please enter a function")
+            # valid func
+            break
           }
         }
 
-        # end loop - keep counter
-        isource <- isource + 1
-      } else {
+        # check for more functions
+        if (func == 0){
+          # no more functions incoming
+          break
+        }
 
-        # empty source
-        print("Source can not be empty. Please enter a source.")
+        # set argument count
+        iarg = 1
+
+        # create list of arguments
+        list_arg = list()
+
+        # while more arguments, keep adding new arguments
+        more_args = 1
+
+        # add arguments
+        while (more_args != 0){
+
+          # ARGUMENT 3: arg
+          arg <- readline(prompt=paste0("Enter argument ", iarg," (e.g. filepath) // type 0 to stop: "))
+
+          # check for empty argument
+          while (arg == ""){
+            print("Argument can not be empty. Please enter an argument.")
+            arg <- readline(prompt=paste0("Enter argument ", iarg," (e.g. filepath) // type 0 to stop: "))
+            if (arg != ""){
+
+              # valid arg
+              break
+            }
+          }
+
+          # check for more arguments
+          if (arg == 0){
+            # no more arguments incoming
+            break
+          }
+
+          # add argument to list of arguments
+          list_arg <- c(list_arg, arg)
+
+          # end loop - keep counter
+          iarg <- iarg + 1
+        }
+
+        # prepare argument(s) to add to function
+        func_arg <- paste(unlist(list_arg), collapse=', ')
+
+        # add argument(s) to function
+        func <- paste0(func, "(", func_arg, ")")
+
+        # add function (with argument(s)) to list of functions
+        list_func <- c(list_func, func)
+
+        # end loop - keep counter
+        ifunc <- ifunc + 1
       }
+
+      # end loop - keep counter
+      isource <- isource + 1
     }
 
     # amount of tabs
@@ -210,126 +264,139 @@ flexdashboardmaker <- function(){
       name_tab <- readline(prompt=paste0("Name of tab ", itab, " // type 0 to stop: "))
 
       # check for empty name of tab
-      if (name_tab != ""){
+      while (name_tab == ""){
+        print("Name of tab can not be empty. Please enter a name.")
+        name_tab <- readline(prompt=paste0("Name of tab ", itab, " // type 0 to stop: "))
+        if (name_tab != ""){
 
-        # check for more tabs
-        if (name_tab == 0) {
-          # no more tabs incoming
+          # valid name of tab
           break
         }
+      }
 
-        # add name of tab to list
-        list_tabs <- c(list_tabs, name_tab)
+      # check for more tabs
+      if (name_tab == 0) {
+        # no more tabs incoming
+        break
+      }
 
-        # print available plots
-        print("Available plots:")
-        print(list_func)
+      # add name of tab to list
+      list_tabs <- c(list_tabs, name_tab)
 
-        # amount of chosen plots for tab
-        amount_plots_tab = 0
+      # print available plots
+      print("Available plots:")
+      print(list_func)
 
-        # list of chosen plots for tab
-        list_chosen_plots = list()
+      # amount of chosen plots for tab
+      amount_plots_tab = 0
 
-        # list of entered function headers
-        list_entered_func_headers = list()
+      # list of chosen plots for tab
+      list_chosen_plots = list()
 
-        # list of entered r functions
-        list_entered_r_func = list()
+      # list of entered function headers
+      list_entered_func_headers = list()
 
-        # set number of function
-        ifunc <- 1
+      # list of entered r functions
+      list_entered_r_func = list()
 
-        # choose plots for tab
-        while (amount_plots_tab < 4){
+      # set number of function
+      ifunc <- 1
 
-          # index of chosen plot for tab
+      # choose plots for tab
+      while (amount_plots_tab < 4){
+
+        # index of chosen plot for tab
+        chosen_plot <- readline(prompt=paste0("Enter index of plot for tab ", name_tab," (", max_plots_tab - amount_plots_tab,
+                                              " plots remaining for ", name_tab, ") // type 0 to stop: "))
+
+        # check for empty index
+        while (chosen_plot == ""){
+          print("Index can not be empty. Please enter an index.")
           chosen_plot <- readline(prompt=paste0("Enter index of plot for tab ", name_tab," (", max_plots_tab - amount_plots_tab,
                                                 " plots remaining for ", name_tab, ") // type 0 to stop: "))
+          if (chosen_plot != ""){
 
-          # check for empty index
-          if (chosen_plot != "") {
-
-            # check for more plots for tab
-            if (chosen_plot == 0) {
-              # no more plots incoming
-              break
-            }
-
-            # convert index to integer
-            chosen_plot = strtoi(chosen_plot)
-
-            # check valid index
-            if (chosen_plot > 0 && chosen_plot <= length(list_func)){
-
-              # valid index
-              # ARGUMENT 4: func header
-              func_header <- readline(prompt=paste0("Header above function ", ifunc," (e.g. Horizontal bar): "))
-
-              # check for empty header
-              if (func_header != ""){
-
-                # ARGUMENT 5: r func
-                r_func <- readline(prompt=paste0("R name of function ", ifunc," (e.g. plot): "))
-
-                # check for empty r name
-                if (r_func != ""){
-
-                  # add chosen plots to list
-                  list_chosen_plots <- c(list_chosen_plots, list_func[[chosen_plot]])
-
-                  # add entered function headers to list
-                  list_entered_func_headers <- c(list_entered_func_headers, func_header)
-
-                  # add entered r functions to list
-                  list_entered_r_func <- c(list_entered_r_func, r_func)
-
-                  # decrease available amount of plots for tab
-                  amount_plots_tab <- amount_plots_tab + 1
-
-                  # increase number of functions
-                  ifunc <- ifunc + 1
-                } else {
-
-                  # empty r name of function
-                  print("R name of function can not be empty. Please enter a name.")
-                }
-              } else {
-
-                # empty header of function
-                print("Header of function can not be empty. Please enter a header.")
-              }
-            } else {
-
-              # invalid index
-              print("Invalid index. Please enter a valid index")
-            }
-          } else {
-
-            # empty value
-            print("Index can not be empty. Please enter a valid index")
+            # valid index
+            break
           }
         }
 
-        # add chosen plots to list of plots
-        list_plots[[length(list_plots)+1]] <- list_chosen_plots
+        # check for more plots for tab
+        if (chosen_plot == 0) {
+          # no more plots incoming
+          break
+        }
 
-        # add function headers to list of function headers
-        list_func_headers[[length(list_func_headers)+1]] <- list_entered_func_headers
+        # convert index to integer
+        chosen_plot = strtoi(chosen_plot)
 
-        # add r function to list of r functions
-        list_r_func[[length(list_r_func)+1]] <- list_entered_r_func
+        # check valid index
+        if (chosen_plot > 0 && chosen_plot <= length(list_func)){
 
-        # decrease tabs to prepare for creation
-        amount_tabs <- amount_tabs - 1
+          # valid index
+          # ARGUMENT 4: func header
+          func_header <- readline(prompt=paste0("Header above function ", ifunc," (e.g. Horizontal bar): "))
 
-        # increase done tabs
-        itab <- itab + 1
-      } else {
+          # check for empty header
+          while (func_header == ""){
+            print("Header can not be empty. Please enter a header.")
+            func_header <- readline(prompt=paste0("Header above function ", ifunc," (e.g. Horizontal bar): "))
+            if (func_header != ""){
 
-        # check for empty name of tab
-        print("Name of the tab can not be empty. Please enter a name.")
+              # valid index
+              break
+            }
+          }
+
+          # ARGUMENT 5: r func
+          r_func <- readline(prompt=paste0("R name of function ", ifunc," (e.g. plot): "))
+
+          # check for empty r name
+          while (r_func == ""){
+            print("R name of function can not be empty. Please enter a name.")
+            r_func <- readline(prompt=paste0("R name of function ", ifunc," (e.g. plot): "))
+            if (r_func != ""){
+
+              # valid r name of function
+              break
+            }
+          }
+
+          # add chosen plots to list
+          list_chosen_plots <- c(list_chosen_plots, list_func[[chosen_plot]])
+
+          # add entered function headers to list
+          list_entered_func_headers <- c(list_entered_func_headers, func_header)
+
+          # add entered r functions to list
+          list_entered_r_func <- c(list_entered_r_func, r_func)
+
+          # decrease available amount of plots for tab
+          amount_plots_tab <- amount_plots_tab + 1
+
+          # increase number of functions
+          ifunc <- ifunc + 1
+        } else {
+
+          # invalid index
+          print("Invalid index. Please enter a valid index.")
+        }
       }
+
+      # add chosen plots to list of plots
+      list_plots[[length(list_plots)+1]] <- list_chosen_plots
+
+      # add function headers to list of function headers
+      list_func_headers[[length(list_func_headers)+1]] <- list_entered_func_headers
+
+      # add r function to list of r functions
+      list_r_func[[length(list_r_func)+1]] <- list_entered_r_func
+
+      # decrease tabs to prepare for creation
+      amount_tabs <- amount_tabs - 1
+
+      # increase done tabs
+      itab <- itab + 1
     }
 
     # write to file
