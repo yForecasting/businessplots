@@ -21,17 +21,13 @@ funmaker <- function(){
   original_wd <- getwd()
 
   # read fun file name
-  fun_name_entered = 0
-  fun_name <- ""
-  while (fun_name_entered == 0){
-    fun_name <- readline(prompt = "File name: ")
-    if (fun_name == ""){
+  fun_name = readline(prompt = "File name (e.g. funmaker): ")
+  while (fun_name == ""){
+    print("File name can not be empty. Please enter a name.")
+    fun_name <- readline(prompt = "File name (e.g. funmaker): ")
+    if (fun_name != ""){
 
-      # invalid file name
-      print("File name can not be empty. Please enter a name.")
-    } else {
-
-      # valid file name
+      # valid name
       break
     }
   }
@@ -70,7 +66,16 @@ funmaker <- function(){
     file.create(fun_file)
 
     # define title
-    title = readline(prompt="Title: ")
+    title = readline(prompt="Title (e.g. funmaker): ")
+    while (title == ""){
+      print("Title can not be empty. Please enter a title.")
+      title <- readline(prompt="Title (e.g. funmaker): ")
+      if (title != ""){
+
+        # valid title
+        break
+      }
+    }
 
     # set argument count
     iarg = 1
@@ -91,65 +96,109 @@ funmaker <- function(){
     while (more_args != 0){
 
       # ARGUMENT 1: arg
-      arg <- readline(prompt=paste0("Argument ", iarg," (e.g. fixed = c(TRUE, FALSE) // type 0 to stop: "))
+      arg <- readline(prompt=paste0("Argument ", iarg," (e.g. title) // type 0 to stop: "))
 
       # check for empty argument
-      if (arg != "") {
+      while (arg == ""){
+        print("Argument can not be empty. Please enter an argument.")
+        arg <- readline(prompt=paste0("Argument ", iarg," (e.g. title) // type 0 to stop: "))
+        if (arg != ""){
 
-        # check for more arguments
-        if (arg == 0){
-
-          # no more arguments incoming
+          # valid arg
           break
         }
-
-        # check if "=" is present in argument
-        if ("=" %in% arg) {
-
-          # split parts of argument in strings
-          s <- strsplit(arg,"=")
-
-          # append string split to list
-          list_arg <- c(list_arg, trimws(s[[1]][1]))
-          arg <- paste0(trimws(s[[1]][1]), " = ", trimws(s[[1]][2]))
-
-        } else {
-          arg <- trimws(arg)
-          list_arg <- c(list_arg, arg)
-        }
-
-        # ARGUMENT 2: description
-        description <- readline(prompt=paste0("Description of argument ", iarg, ": "))
-
-        if (description != ""){
-          # add short description to list
-          list_explain_arg <- c(list_explain_arg, trimws(description))
-
-          # end loop - keep counter
-          iarg <- iarg + 1
-        } else {
-
-          # empty description
-          print("Description can not be empty. Please enter a description.")
-        }
-      } else {
-
-        # empty argument
-        print("Argument can not be empty. Please enter an argument.")
       }
+
+      # check for more arguments
+      if (arg == 0){
+
+        # no more arguments incoming
+        break
+      }
+
+      # check if "=" is present in argument
+      if ("=" %in% arg) {
+
+        # split parts of argument in strings
+        s <- strsplit(arg,"=")
+
+        # append string split to list
+        list_arg <- c(list_arg, trimws(s[[1]][1]))
+        arg <- paste0(trimws(s[[1]][1]), " = ", trimws(s[[1]][2]))
+
+      } else {
+        arg <- trimws(arg)
+        list_arg <- c(list_arg, arg)
+      }
+
+      # ARGUMENT 2: description
+      description <- readline(prompt=paste0("Description of argument ", iarg, ": "))
+
+      # check for empty description
+      while (description == ""){
+        print("Description can not be empty. Please enter a description.")
+        description <- readline(prompt=paste0("Description of argument ", iarg, ": "))
+        if (description != ""){
+
+          # valid description
+          break
+        }
+      }
+
+      # add short description to list
+      list_explain_arg <- c(list_explain_arg, trimws(description))
+
+      # end loop - keep counter
+      iarg <- iarg + 1
     }
 
     # define short description
     short_description = readline(prompt="Short description: ")
+    while (short_description == ""){
+      print("Short description can not be empty. Please enter a short description.")
+      short_description <- readline(prompt="Short description: ")
+      if (short_description != ""){
+
+        # valid short description
+        break
+      }
+    }
 
     # define long description
     long_description = readline(prompt="Long description: ")
+    while (long_description == ""){
+      print("Long description can not be empty. Please enter a long description.")
+      long_description <- readline(prompt="Long description: ")
+      if (long_description != ""){
+
+        # valid long description
+        break
+      }
+    }
 
     # define author
-    author = readline(prompt="Author: ")
+    author = readline(prompt="Author(s): ")
+    while (author == ""){
+      print("Author can not be empty. Please enter an author.")
+      author <- readline(prompt="Author(s): ")
+      if (author != ""){
+
+        # valid author
+        break
+      }
+    }
 
     # define return value
     return_value = readline(prompt="Return: ")
+    while (return_value == ""){
+      print("Return value can not be empty. Please enter a return value.")
+      return_value <- readline(prompt="Return: ")
+      if (return_value != ""){
+
+        # valid return value
+        break
+      }
+    }
 
     # define export value
     export_value = readline(prompt="Export: ")
