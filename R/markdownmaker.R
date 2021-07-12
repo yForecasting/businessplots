@@ -40,10 +40,12 @@ markdownmaker <- function(){
 
   # check if markdown file already exists
   if (file.exists(markdown_file)){
+
     # markdown file already exists
     reassure <- readline(prompt="This markdown already exists, overwrite??? (y/n): ")
     reassure <- tolower(reassure)
   } else{
+
     # markdown file does not exist
     reassure <- "y"
   }
@@ -90,111 +92,128 @@ markdownmaker <- function(){
       # ARGUMENT 1: source
       source <- readline(prompt=paste0("Name of source file ", isource," (e.g. hist) // type 0 to stop: "))
 
-      # check for more sources
-      if (source == 0){
-        # no more sources incoming
-        break
-      }
+      # check for empty source
+      if (source != ""){
 
-      # add source to list of sources
-      list_sources <- c(list_sources, source)
+        # check for more sources
+        if (source == 0){
 
-      # set func count
-      ifunc = 1
+          # no more sources incoming
+          break
+        }
 
-      # while more sources, keep adding new sources
-      more_func = 1
+        # add source to list of sources
+        list_sources <- c(list_sources, source)
 
-      # add functions
-      while (more_func != 0){
+        # set func count
+        ifunc = 1
 
-        # ARGUMENT 2: func
-        func <- readline(prompt=paste0("Name of function ", ifunc," (e.g. plot) // type 0 to stop: "))
+        # while more sources, keep adding new sources
+        more_func = 1
 
-        # check for empty function
-        if (func != ""){
+        # add functions
+        while (more_func != 0){
 
-          # check for more functions
-          if (func == 0){
-            # no more functions incoming
-            break
-          }
+          # ARGUMENT 2: func
+          func <- readline(prompt=paste0("Name of function ", ifunc," (e.g. plot) // type 0 to stop: "))
 
-          # ARGUMENT 3: r func
-          r_func <- readline(prompt=paste0("R name of function ", ifunc," (e.g. plot): "))
+          # check for empty function
+          if (func != ""){
 
-          if (r_func != ""){
+            # check for more functions
+            if (func == 0){
 
-            # ARGUMENT 4: header above function
-            func_header <- readline(prompt=paste0("Header above function ", ifunc," (e.g. Horizontal bar): "))
+              # no more functions incoming
+              break
+            }
 
-            # check for empty header above function
-            if (func_header != ""){
+            # ARGUMENT 3: r func
+            r_func <- readline(prompt=paste0("R name of function ", ifunc," (e.g. plot): "))
 
-              # set argument count
-              iarg = 1
+            if (r_func != ""){
 
-              # create list of arguments
-              list_arg = list()
+              # ARGUMENT 4: header above function
+              func_header <- readline(prompt=paste0("Header above function ", ifunc," (e.g. Horizontal bar): "))
 
-              # while more args, keep adding new arguments
-              more_args = 1
+              # check for empty header above function
+              if (func_header != ""){
 
-              # add arguments
-              while (more_args != 0){
+                # set argument count
+                iarg = 1
 
-                # ARGUMENT 5: arg
-                arg <- readline(prompt=paste0("Enter argument ", iarg," (e.g. filepath) // type 0 to stop: "))
+                # create list of arguments
+                list_arg = list()
 
-                # check for empty argument
-                if (arg != ""){
+                # while more args, keep adding new arguments
+                more_args = 1
 
-                  # check for more arguments
-                  if (arg == 0){
-                    # no more arguments incoming
-                    break
+                # add arguments
+                while (more_args != 0){
+
+                  # ARGUMENT 5: arg
+                  arg <- readline(prompt=paste0("Enter argument ", iarg," (e.g. filepath) // type 0 to stop: "))
+
+                  # check for empty argument
+                  if (arg != ""){
+
+                    # check for more arguments
+                    if (arg == 0){
+
+                      # no more arguments incoming
+                      break
+                    }
+
+                    # add argument to list of arguments
+                    list_arg <- c(list_arg, arg)
+
+                    # end loop - keep counter
+                    iarg <- iarg + 1
+                  } else {
+                    print("Argument can not be empty. Please enter an argument.")
                   }
-
-                  # add argument to list of arguments
-                  list_arg <- c(list_arg, arg)
-
-                  # end loop - keep counter
-                  iarg <- iarg + 1
-                } else {
-                  print("Argument can not be empty. Please enter an argument.")
                 }
+
+                # add function header to list of function headers
+                list_func_headers <- c(list_func_headers, func_header)
+
+                # add r name of function to list of r names of functions
+                list_r_func <- c(list_r_func, r_func)
+
+                # prepare argument(s) to add to function
+                func_arg <- paste(unlist(list_arg), collapse=', ')
+
+                # add argument(s) to function
+                func <- paste0(func, "(", func_arg, ")")
+
+                # add function (with argument(s)) to list of functions
+                list_func <- c(list_func, func)
+
+                # end loop - keep counter
+                ifunc <- ifunc + 1
+              } else {
+
+                # empty header
+                print("Header above function can not be empty. Please enter a header.")
               }
-
-              # add function header to list of function headers
-              list_func_headers <- c(list_func_headers, func_header)
-
-              # add r name of function to list of r names of functions
-              list_r_func <- c(list_r_func, r_func)
-
-              # prepare argument(s) to add to function
-              func_arg <- paste(unlist(list_arg), collapse=', ')
-
-              # add argument(s) to function
-              func <- paste0(func, "(", func_arg, ")")
-
-              # add function (with argument(s)) to list of functions
-              list_func <- c(list_func, func)
-
-              # end loop - keep counter
-              ifunc <- ifunc + 1
             } else {
-              print("Header above function can not be empty. Please enter a header.")
+
+              # empty R name of function
+              print("R name of function can not be empty. Please enter a r name of the function.")
             }
           } else {
-            print("R name of function can not be empty. Please enter a r name of the function.")
-          }
-        } else {
-          print("Source file can not be empty. Please enter a source file.")
-        }
-      }
 
-      # end loop - keep counter
-      isource <- isource + 1
+            # empty function
+            print("Function can not be empty. Please enter a function.")
+          }
+        }
+
+        # end loop - keep counter
+        isource <- isource + 1
+      } else {
+
+        # empty source
+        print("Source can not be empty. Please enter a source.")
+      }
     }
 
     # write to file
