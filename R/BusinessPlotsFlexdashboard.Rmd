@@ -19,6 +19,7 @@ source("piechart.R", local = knitr::knit_global())
 source("gaugechart.R", local = knitr::knit_global())
 source("spiderchart.R", local = knitr::knit_global())
 source("bar.R", local = knitr::knit_global())
+source("barwithline.R", local = knitr::knit_global())
 source("line.R", local = knitr::knit_global())
 source("scatter.R", local = knitr::knit_global())
 source("multipleline.R", local = knitr::knit_global())
@@ -60,6 +61,7 @@ bar(filepath, x_axis, y_axis ,TRUE, FALSE, colors[[1]], colors[[2]], colors[[3]]
 ```{r verbar, fig.height=7.5, fig.width=17, echo=FALSE}
 bar(filepath, x_axis, y_axis ,FALSE, FALSE, colors[[1]], colors[[2]], colors[[3]], colors[[4]], colors[[5]], colors[[6]])
 ```
+
 
 Column {data-width=500}
 -----------------------------------------------------------------------
@@ -168,5 +170,11 @@ Extra plots
 ### Gaugechart warehouse
 ```{r gaugachart1, echo=FALSE}
 gaugechart(69, 100, "indicator", "gauge+number", "Visitors inside", lwd*4, lwd/2, lwd/2, lwd, lwd/2, "Arial", colors[[1]], colors[[2]], colors[[3]], colors[[4]], colors[[5]], colors[[6]])
+```
+
+### Bar with line plot
+```{r barwithline, echo=FALSE}
+
+barwithline(filepath, x_axis , y_axes, line_type, legend_pos, colors[[1]], colors[[2]], colors[[3]], colors[[4]], colors[[5]], colors[[6]])
 ```
 
