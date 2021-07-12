@@ -220,8 +220,10 @@ funmaker <- function(){
     cat(paste0(comment, long_description, "\n", empty_comment))
 
     # write arguments
-    for (i in 1:length(list_arg)){
-      cat(paste0(comment, "@param ", list_arg[[i]][1], " ", list_explain_arg[[i]][1], "\n"))
+    if (length(list_arg) > 0){
+      for (i in 1:length(list_arg)){
+        cat(paste0(comment, "@param ", list_arg[[i]][1], " ", list_explain_arg[[i]][1], "\n"))
+      }
     }
 
     # write comments
