@@ -1,4 +1,4 @@
-#' multipleline scatter plot function with multiple scales
+#' multiple line scatter plot function with multiple scales
 #'
 #' Creates a plot of the data with multiple scatter plots that have a different scale.
 #'
