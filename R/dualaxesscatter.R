@@ -26,16 +26,20 @@
 #'
 #' @examples
 #'   \dontrun{
-#'      dualaxscatter("Testdata.csv", "Year", c("Quota", "Incidents","Complatins"),"topleft","red","green","orange","yellow","blue","black")
+#'      dualaxscatter("Testdata.csv", 
+#' "Year", 
+#' c("Quota", "Incidents","Complatins"),
+#' "topleft","red","green","orange",
+#' "yellow","blue","black")
 #'   }
 #'
 #'
 
 dualaxscatter <- function(file, x_column, y_columns, legend_pos, primary_color,
                      secondary_color, tertiary_color, quaternary_color, quinary_color, senary_color) {
-  df <- read.csv(file,header=TRUE,sep=';')
+  df <- utils::read.csv(file,header=TRUE,sep=';')
   if (substr(colnames(df)[1],2,3)== ".."){
-    df <- read.csv(file,fileEncoding="UTF-8-BOM",header=TRUE,sep=';')
+    df <- utils::read.csv(file,fileEncoding="UTF-8-BOM",header=TRUE,sep=';')
   }
   names <- names(df)
   basic_palette <- "Paired"

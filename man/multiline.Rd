@@ -49,7 +49,12 @@ This function creates a plot with multiple lines based on the format of the data
 }
 \examples{
   \dontrun{
-     multiline("testdata.csv", column_1 , c("column2", "column3", "column4"), "topleft", "red","green","orange","yellow","blue","black")
+     multiline("testdata.csv", 
+column_1 , 
+c("column2", "column3", "column4"), 
+"topleft", "red","green",
+"orange","yellow","
+blue","black")
   }
 
 

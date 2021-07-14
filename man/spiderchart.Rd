@@ -52,7 +52,11 @@ This function creates a spider chart based on two columns of a file with data.
 }
 \examples{
   \dontrun{
-     spiderchart("testdata.csv", "Year", "Quota", "Annual quota", 4, 2, 2, "#004D9A", "#002142", "#0069D2", "#0180FF")
+     spiderchart("testdata.csv", "
+Year", "Quota", "
+Annual quota", 4, 2, 2, 
+"#004D9A", "#002142", 
+"#0069D2", "#0180FF")
   }
 
 

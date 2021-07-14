@@ -24,16 +24,25 @@
 #'
 #' @examples
 #'   \dontrun{
-#'      bar("testdata.csv", "column_1", "column2", TRUE, FALSE, "#004D9A", "#002142", "#0069D2", "#0180FF","#004D9A", "#002142") )
+#'      bar("testdata.csv", 
+	#' "column_1" 
+#' "column2", 
+#' TRUE, FALSE, 
+#' "#004D9A", 
+#' "#002142", 
+#' "#0069D2", 
+#' "#0180FF",
+#' "#004D9A", 
+#' "#002142") )
 #'   }
 #'
 
 
 bar <- function(file, x_column, y_column, horizontal = TRUE, Stacked = FALSE,
                 primary_color, secondary_color, tertiary_color, quaternary_color, quinary_color, senary_color){
-  df <- read.csv(file,header=TRUE,sep=';')
+  df <- utils::read.csv(file,header=TRUE,sep=';')
   if (substr(colnames(df)[1],2,3)== ".."){
-    df <- read.csv(file,fileEncoding="UTF-8-BOM",header=TRUE,sep=';')
+    df <- utils::read.csv(file,fileEncoding="UTF-8-BOM",header=TRUE,sep=';')
   }
   names <- names(df)
   basic_palette <- "Paired"

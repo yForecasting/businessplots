@@ -27,7 +27,10 @@
 #'
 #' @examples
 #'   \dontrun{
-#'      create_treemap("testdata.csv", "Year", "Quota", "#004D9A", "#002142", "#0069D2", "#0180FF", "#004D9A", "#002142")
+#'      create_treemap("testdata.csv", 
+#' "Year", "Quota", 
+#' "#004D9A", "#002142", "#0069D2", 
+#' "#0180FF", "#004D9A", "#002142")
 #'   }
 #'
 #'
@@ -39,14 +42,14 @@ create_treemap <- function(file, index, quantity, primary_color, secondary_color
     # index_columns are columns to group the tree
 
     # read file
-    data <- read.csv(file, header = TRUE, sep = ';')
+    data <- utils::read.csv(file, header = TRUE, sep = ';')
     if (substr(colnames(data)[1], 2, 3) == ".."){
-        df <- read.csv(data, fileEncoding = "UTF-8-BOM", header = TRUE, sep = ';')
+        df <- utils::read.csv(data, fileEncoding = "UTF-8-BOM", header = TRUE, sep = ';')
     }
 
     # library
     library(treemap)
-    treemap(data,
+    treemap::treemap(data,
             index=index,
             vSize = quantity,
             palette =  c(primary_color, secondary_color, tertiary_color, quaternary_color, quinary_color, senary_color))

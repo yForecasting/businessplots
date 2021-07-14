@@ -70,8 +70,15 @@ This function creates a gauge chart based on an integer or a numeric value.
 }
 \examples{
   \dontrun{
-     gaugechart(25, 100, "indicator", "gauge+number", "Visitors inside", 24, 1, 2, 4, 0.75, "Arial",
-       "#004D9A", "#002142", "#0069D2", "#0180FF", "#4FA7FF", "#A7D3FF")
+     gaugechart(25, 100, 
+"indicator", "gauge+number", 
+"Visitors inside", 
+24, 1, 2, 4, 0.75, 
+"Arial",
+       
+"#004D9A", "#002142", "#0069D2", 
+"#0180FF", "#4FA7FF", 
+"#A7D3FF")
   }
 
 

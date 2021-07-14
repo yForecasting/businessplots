@@ -52,7 +52,16 @@ This function creates a bar plot based on two columns of a file with data.
 }
 \examples{
   \dontrun{
-     bar("testdata.csv", "column_1", "column2", TRUE, FALSE, "#004D9A", "#002142", "#0069D2", "#0180FF","#004D9A", "#002142") )
+     bar("testdata.csv", 
+"column_1" 
+"column2", 
+TRUE, FALSE, 
+"#004D9A", 
+"#002142", 
+"#0069D2", 
+"#0180FF",
+"#004D9A", 
+"#002142") )
   }
 
 }

@@ -49,7 +49,12 @@ This function creates a pie chart based on a column of a file with data.
 }
 \examples{
   \dontrun{
-     piechart("testdata.csv", "Year", "Quota", "#004D9A", "#002142", "#0069D2", "#0180FF", "#4FA7FF", "#A7D3FF")
+     piechart(
+"testdata.csv", 
+"Year", "Quota", 
+"#004D9A", "#002142", 
+"#0069D2", "#0180FF", 
+"#4FA7FF", "#A7D3FF")
   }
 
 

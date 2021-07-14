@@ -25,9 +25,9 @@
 formatobject <- function(file = "formatobject.csv"){
 
   # read data
-  data <- read.csv(file,header=TRUE,sep=';')
+  data <- utils::read.csv(file,header=TRUE,sep=';')
   if (substr(colnames(data)[1],2,3)== ".."){
-    data <- read.csv(file,fileEncoding="UTF-8-BOM",header=TRUE,sep=';')
+    data <- utils::read.csv(file,fileEncoding="UTF-8-BOM",header=TRUE,sep=';')
   }
 
   # return data

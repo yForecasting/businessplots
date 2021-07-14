@@ -49,7 +49,11 @@ This function creates a plot with multiple scatter plots and a different scale b
 }
 \examples{
   \dontrun{
-     dualaxscatter("Testdata.csv", "Year", c("Quota", "Incidents","Complatins"),"topleft","red","green","orange","yellow","blue","black")
+     dualaxscatter("Testdata.csv", 
+"Year", 
+c("Quota", "Incidents","Complatins"),
+"topleft","red","green","orange",
+"yellow","blue","black")
   }
 
 

@@ -40,7 +40,10 @@ This function creates a plot based on the format of the data
 }
 \examples{
   \dontrun{
-     scatter("testdata.csv", "column_1", "column2", 2, FALSE, "#004D9A", "#002142")
+      scatter("testdata.csv", 
+"column_1", "column2", 
+2, FALSE, 
+"#004D9A", "#002142")
   }
 
 

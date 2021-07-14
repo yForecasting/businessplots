@@ -42,11 +42,16 @@ A bar plot with line
 Creates a bar plot with line
 }
 \details{
-this fuction plots a bar plot with line based on the data
+this fucntion plots a bar plot with line based on the data
 }
 \examples{
   \dontrun{
-     barwithline("testdata.csv", column_1 , c("column2", "column3", "column4"), 1, 1, "red","green","orange","yellow","blue","black")
+     barwithline("testdata.csv", 
+column_1, 
+c("column2", "column3", "column4"), 
+1, 1, "red","green",
+"orange","yellow","
+blue","black")
   }
 
 

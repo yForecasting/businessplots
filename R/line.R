@@ -24,15 +24,19 @@
 #'
 #' @examples
 #'   \dontrun{
-#'      line("testdata.csv", "column_1", "column_2", 5, 2, TRUE, "#004D9A", "#002142")
+#'      line("testdata.csv", 
+#' "column_1", 
+#' "column_2", 5, 2, TRUE, 
+#' "#004D9A", 
+#' "#002142")
 #'   }
 #'
 #'
 
 line <- function(file, x_column, y_column, symbol, line_type, auto_fit = TRUE, primary_color, secondary_color) {
-  df <- read.csv(file,header=TRUE,sep=';')
+  df <- utils::read.csv(file,header=TRUE,sep=';')
   if (substr(colnames(df)[1],2,3)== ".."){
-    df <- read.csv(file,fileEncoding="UTF-8-BOM",header=TRUE,sep=';')
+    df <- utils::read.csv(file,fileEncoding="UTF-8-BOM",header=TRUE,sep=';')
   }
   if(auto_fit){
     ylim <- c(min(df[,y_column], na.rm=TRUE),max(df[,y_column], na.rm=TRUE))

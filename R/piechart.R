@@ -23,7 +23,12 @@
 #'
 #' @examples
 #'   \dontrun{
-#'      piechart("testdata.csv", "Year", "Quota", "#004D9A", "#002142", "#0069D2", "#0180FF", "#4FA7FF", "#A7D3FF")
+#'      piechart(
+#' "testdata.csv", 
+#' "Year", "Quota", 
+#' "#004D9A", "#002142", 
+#' "#0069D2", "#0180FF", 
+#' "#4FA7FF", "#A7D3FF")
 #'   }
 #'
 #'
@@ -43,9 +48,9 @@ piechart <- function(file, main, pie_label, pie_data_label, primary_color, secon
   # senary_color is sixth color for pie chart
 
   # read data
-  data <- read.csv(file,header=TRUE,sep=';')
+  data <- utils::read.csv(file,header=TRUE,sep=';')
   if (substr(colnames(data)[1],2,3)== ".."){
-    data <- read.csv(file,fileEncoding="UTF-8-BOM",header=TRUE,sep=';')
+    data <- utils::read.csv(file,fileEncoding="UTF-8-BOM",header=TRUE,sep=';')
   }
 
   # set labels

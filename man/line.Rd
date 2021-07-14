@@ -43,7 +43,11 @@ This function creates a plot based on the format of the data
 }
 \examples{
   \dontrun{
-     line("testdata.csv", "column_1", "column_2", 5, 2, TRUE, "#004D9A", "#002142")
+     line("testdata.csv", 
+"column_1", 
+"column_2", 5, 2, TRUE, 
+"#004D9A", 
+"#002142")
   }
 
 

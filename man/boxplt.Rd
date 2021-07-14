@@ -49,7 +49,13 @@ This function creates a box plot based on a column of a file with data.
 }
 \examples{
   \dontrun{
-     boxplt("testdata.csv", c("column_1","column_2"), 19, TRUE, "#004D9A", "#002142", "#0069D2", "#0180FF","#004D9A", "#002142") )
+     boxplt("testdata.csv", 
+c("column_1","column_2"), 
+19, TRUE, 
+"#004D9A", 
+"#002142", 
+"#0069D2", "#0180FF",
+"#004D9A", "#002142") )
   }
 
 }

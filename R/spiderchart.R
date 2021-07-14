@@ -25,7 +25,11 @@
 #'
 #' @examples
 #'   \dontrun{
-#'      spiderchart("testdata.csv", "Year", "Quota", "Annual quota", 4, 2, 2, "#004D9A", "#002142", "#0069D2", "#0180FF")
+#'      spiderchart("testdata.csv", "
+#' Year", "Quota", "
+#' Annual quota", 4, 2, 2, 
+#' "#004D9A", "#002142", 
+#' "#0069D2", "#0180FF")
 #'   }
 #'
 #'
@@ -49,9 +53,9 @@ spiderchart <- function(file, spider_label, spider_data_label, title, polygon_li
   library(fmsb)
 
   # read data
-  data <- read.csv(file,header=TRUE,sep=';')
+  data <- utils::read.csv(file,header=TRUE,sep=';')
   if (substr(colnames(data)[1],2,3)== ".."){
-    df <- read.csv(data,fileEncoding="UTF-8-BOM",header=TRUE,sep=';')
+    df <- utils::read.csv(data,fileEncoding="UTF-8-BOM",header=TRUE,sep=';')
   }
 
   # retrieve columns spider chart
@@ -81,6 +85,6 @@ spiderchart <- function(file, spider_label, spider_data_label, title, polygon_li
   rgb <- col2rgb(secondary_color)
 
   # plot spider chart
-  radarchart(spider_data, pcol=primary_color, pfcol=rgb(rgb["red", ], rgb["green", ], rgb["blue", ], max = 255, alpha = 100, names = "blue50"), cglcol=tertiary_color, axislabcol=quaternary_color,
+  fmsb::radarchart(spider_data, pcol=primary_color, pfcol=rgb(rgb["red", ], rgb["green", ], rgb["blue", ], max = 255, alpha = 100, names = "blue50"), cglcol=tertiary_color, axislabcol=quaternary_color,
              plwd=polygon_line_width, cglty=net_line_type, cglwd=net_line_width, title=title)
 }

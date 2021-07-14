@@ -23,15 +23,21 @@
 #'
 #' @examples
 #'   \dontrun{
-#'      boxplt("testdata.csv", c("column_1","column_2"), 19, TRUE, "#004D9A", "#002142", "#0069D2", "#0180FF","#004D9A", "#002142") )
+#'      boxplt("testdata.csv", 
+#' c("column_1","column_2"), 
+#' 19, TRUE, 
+#' "#004D9A", 
+#' "#002142", 
+#' "#0069D2", "#0180FF",
+#' "#004D9A", "#002142") )
 #'   }
 #'
 
 boxplt <- function(file, columns, mean_dot_symbol, mean_dot = FALSE,  primary_color, secondary_color,
                    tertiary_color, quaternary_color, quinary_color, senary_color){
-  df <- read.csv(file,header=TRUE,sep=';')
+  df <- utils::read.csv(file,header=TRUE,sep=';')
   if (substr(colnames(df)[1],2,3)== ".."){
-    df <- read.csv(file,fileEncoding="UTF-8-BOM",header=TRUE,sep=';')
+    df <- utils::read.csv(file,fileEncoding="UTF-8-BOM",header=TRUE,sep=';')
   }
   names <- names(df)
   basic_color <- "#999999"

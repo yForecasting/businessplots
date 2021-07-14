@@ -49,7 +49,11 @@ This function creates a plot with multiple scatter plots based on the format of 
 }
 \examples{
   \dontrun{
-     multiscatter("testdata.csv", column_1 , c("column2", "column3", "column4"), "topleft", "red","green","orange","yellow","blue","black")
+     multiscatter("testdata.csv", 
+column_1 , 
+c("column2", "column3", "column4"), 
+"topleft", "red","green","
+orange","yellow","blue","black")
   }
 
 

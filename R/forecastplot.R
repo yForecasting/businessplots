@@ -17,7 +17,9 @@
   #'
   #' @examples
   #'   \dontrun{
-  #'        forecastplot("ProductionDataSample.csv", "Weight", "WeightPredicted")
+  #'        forecastplot("ProductionDataSample.csv", 
+  #' "Weight", 
+  #' "WeightPredicted")
   #'   }
   #'
   #'
@@ -34,11 +36,11 @@
     library(greybox)
 
     # read data
-    data <- read.csv(file,header=TRUE,sep=';')
+    data <- utils::read.csv(file,header=TRUE,sep=';')
     if (substr(colnames(data)[1],2,3)== ".."){
-      data <- read.csv(file,fileEncoding="UTF-8-BOM",header=TRUE,sep=';')
+      data <- utils::read.csv(file,fileEncoding="UTF-8-BOM",header=TRUE,sep=';')
     }
 
     # plot forecast plot
-    graphmaker(data[, X], data[, y])
+    greybox::graphmaker(data[, X], data[, y])
   }

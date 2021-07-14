@@ -2,7 +2,7 @@
 #'
 #' Creates a bar plot with line
 #'
-#' this fuction plots a bar plot with line based on the data
+#' this fucntion plots a bar plot with line based on the data
 #'
 #'
 #'
@@ -24,16 +24,21 @@
 #'
 #' @examples
 #'   \dontrun{
-#'      barwithline("testdata.csv", column_1 , c("column2", "column3", "column4"), 1, 1, "red","green","orange","yellow","blue","black")
+#'      barwithline("testdata.csv", 
+#' column_1, 
+#' c("column2", "column3", "column4"), 
+#' 1, 1, "red","green",
+#' "orange","yellow","
+#' blue","black")
 #'   }
 #'
 #'
 
 barwithline <- function(file, x_column, y_columns, line_type, legend_pos, primary_color,
                       secondary_color, tertiary_color, quaternary_color, quinary_color, senary_color) {
-    df <- read.csv(file, header = TRUE, sep = ';')
+    df <- utils::read.csv(file, header = TRUE, sep = ';')
     if (substr(colnames(df)[1], 2, 3) == "..") {
-        df <- read.csv(file, fileEncoding = "UTF-8-BOM", header = TRUE, sep = ';')
+        df <- utils::read.csv(file, fileEncoding = "UTF-8-BOM", header = TRUE, sep = ';')
     }
     names <- names(df)
 

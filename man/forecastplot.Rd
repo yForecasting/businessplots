@@ -24,7 +24,9 @@ This function creates a forecast plot based on the actual values and the predict
 }
 \examples{
   \dontrun{
-       forecastplot("ProductionDataSample.csv", "Weight", "WeightPredicted")
+       forecastplot("ProductionDataSample.csv", 
+"Weight", 
+"WeightPredicted")
   }
 
 
