@@ -24,21 +24,21 @@
 #'
 #' @examples
 #'   \dontrun{
-#'      bar("testdata.csv", 
-	#' "column_1" 
-#' "column2", 
-#' TRUE, FALSE, 
-#' "#004D9A", 
-#' "#002142", 
-#' "#0069D2", 
+#'      bar("testdata.csv",
+	#' "column_1"
+#' "column2",
+#' TRUE, FALSE,
+#' "#004D9A",
+#' "#002142",
+#' "#0069D2",
 #' "#0180FF",
-#' "#004D9A", 
+#' "#004D9A",
 #' "#002142") )
 #'   }
 #'
 
 
-bar <- function(file, x_column, y_column, horizontal = TRUE, Stacked = FALSE,
+bar <- function(file, x_column, y_column, horizontal = TRUE, stacked = FALSE,
                 primary_color, secondary_color, tertiary_color, quaternary_color, quinary_color, senary_color){
   df <- utils::read.csv(file,header=TRUE,sep=';')
   if (substr(colnames(df)[1],2,3)== ".."){

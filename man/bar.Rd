@@ -9,7 +9,7 @@ bar(
   x_column,
   y_column,
   horizontal = TRUE,
-  Stacked = FALSE,
+  stacked = FALSE,
   primary_color,
   secondary_color,
   tertiary_color,
@@ -27,6 +27,8 @@ bar(
 
 \item{horizontal}{Put True if you want to plot a horizontal bar plot, False for vertical plot.}
 
+\item{stacked}{Put True for a stacked plot, False for normal bar plot}
+
 \item{primary_color}{First color for bar plot}
 
 \item{secondary_color}{Second color for bar plot}
@@ -38,8 +40,6 @@ bar(
 \item{quinary_color}{Fifth color for bar plot}
 
 \item{senary_color}{Sixth color for bar plot}
-
-\item{stacked}{Put True for a stacked plot, False for normal bar plot}
 }
 \value{
 A bar plot
@@ -52,15 +52,15 @@ This function creates a bar plot based on two columns of a file with data.
 }
 \examples{
   \dontrun{
-     bar("testdata.csv", 
-"column_1" 
-"column2", 
-TRUE, FALSE, 
-"#004D9A", 
-"#002142", 
-"#0069D2", 
+     bar("testdata.csv",
+"column_1"
+"column2",
+TRUE, FALSE,
+"#004D9A",
+"#002142",
+"#0069D2",
 "#0180FF",
-"#004D9A", 
+"#004D9A",
 "#002142") )
   }
 
