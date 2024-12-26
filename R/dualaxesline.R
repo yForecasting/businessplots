@@ -26,9 +26,9 @@
 #'
 #' @examples
 #'   \dontrun{
-#'      dualaxes("testdata.csv", 
-#' column_1 , 
-#' c("column2", "column3", "column4"), 
+#'      dualaxes("testdata.csv",
+#' column_1 ,
+#' c("column2", "column3", "column4"),
 #' "topleft", "red","green",
 #' "orange","yellow","
 #' blue","black")
@@ -38,7 +38,7 @@
 
 dualaxes <- function(file, x_column, y_columns, legend_pos, primary_color,
                            secondary_color, tertiary_color, quaternary_color, quinary_color, senary_color) {
-  df <- utils::utils::read.csv(file,header=TRUE,sep=';')
+  df <- utils::read.csv(file,header=TRUE,sep=';')
   if (substr(colnames(df)[1],2,3)== ".."){
     df <- utils::read.csv(file,fileEncoding="UTF-8-BOM",header=TRUE,sep=';')
   }

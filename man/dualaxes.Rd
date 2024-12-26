@@ -49,9 +49,9 @@ This function creates a plot with multiple lines and a different scale based on 
 }
 \examples{
   \dontrun{
-     dualaxes("testdata.csv", 
-column_1 , 
-c("column2", "column3", "column4"), 
+     dualaxes("testdata.csv",
+column_1 ,
+c("column2", "column3", "column4"),
 "topleft", "red","green",
 "orange","yellow","
 blue","black")

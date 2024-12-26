@@ -22,18 +22,18 @@
 #'
 #' @examples
 #'   \dontrun{
-#'      histogram("testdata.csv", 
-#' "column_1", TRUE, 
-#' "#004D9A", 
-#' "#002142", 
-#' "#0069D2", 
-#' "#0180FF","#004D9A", 
+#'      histogram("testdata.csv",
+#' "column_1", TRUE,
+#' "#004D9A",
+#' "#002142",
+#' "#0069D2",
+#' "#0180FF","#004D9A",
 #' "#002142")
 #'   }
 #'
 histogram <- function(file, main_column, show_normal_distribution = FALSE, primary_color,
                       secondary_color, tertiary_color, quaternary_color, quinary_color, senary_color){
-  df <- utils::utils::read.csv(file,header=TRUE,sep=';')
+  df <- utils::read.csv(file,header=TRUE,sep=';')
   if (substr(colnames(df)[1],2,3)== ".."){
     df <- utils::read.csv(file,fileEncoding="UTF-8-BOM",header=TRUE,sep=';')
   }

@@ -18,6 +18,15 @@ Retrieve the styles for all the charts.
 \details{
 This function retrieves all the styles (like colors, fonts, line thicknness...) for all the charts.
 }
+\examples{
+\dontrun{
+ formatobject("testdata.csv")
+ extract_data_formatobject(formatobject("testdata.csv"), "colors")
+}
+
+
+
+}
 \author{
 Ruben Vanhecke
 }

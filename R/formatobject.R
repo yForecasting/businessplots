@@ -13,10 +13,10 @@
 #' @export
 #'
 #' @examples
-#'   \dontrun{
-#'      formatobject("testdata.csv")
-#'      extract_data_formatobject(formatobject("testdata.csv"), "colors)
-#'   }
+#' \dontrun{
+#'  formatobject("testdata.csv")
+#'  extract_data_formatobject(formatobject("testdata.csv"), "colors")
+#' }
 #'
 #'
 #'

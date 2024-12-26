@@ -46,12 +46,12 @@ This function creates a histogram plot based on a column of a file with data.
 }
 \examples{
   \dontrun{
-     histogram("testdata.csv", 
-"column_1", TRUE, 
-"#004D9A", 
-"#002142", 
-"#0069D2", 
-"#0180FF","#004D9A", 
+     histogram("testdata.csv",
+"column_1", TRUE,
+"#004D9A",
+"#002142",
+"#0069D2",
+"#0180FF","#004D9A",
 "#002142")
   }
 
