@@ -1,6 +1,6 @@
 Package: businessplots
 Title: Creating easy plots Business
-Version: 0.0.1
+Version: 0.0.2
 Authors@R: 
     person(given = "Yves R.",
            family = "Sagaert",
@@ -11,15 +11,16 @@ License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.1
+RoxygenNote: 7.3.2
 Imports: 
     ggplot2,
-			fmsb,
-			plotly,
-			greybox,
-			forecast,
-			Mcomp,
-			shiny,
-			shinydashboard			
-	
-	
+    fmsb,
+    plotly,
+    greybox,
+    forecast,
+    Mcomp,
+    shiny,
+    shinydashboard,
+    stats,
+    grDevices,
+    graphics
