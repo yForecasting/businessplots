@@ -2,8 +2,8 @@
 % Please edit documentation in R/businessplots_package.R
 \docType{package}
 \name{businessplots}
-\alias{businessplots}
 \alias{businessplots-package}
+\alias{businessplots}
 \title{businessplots: A package for performing basic plots for business}
 \description{
 This package provides functionality for basic business plots

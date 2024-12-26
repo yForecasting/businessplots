@@ -27,9 +27,9 @@
 #'
 #' @examples
 #'   \dontrun{
-#'      create_treemap("testdata.csv", 
-#' "Year", "Quota", 
-#' "#004D9A", "#002142", "#0069D2", 
+#'      create_treemap("testdata.csv",
+#' "Year", "Quota",
+#' "#004D9A", "#002142", "#0069D2",
 #' "#0180FF", "#004D9A", "#002142")
 #'   }
 #'
@@ -48,7 +48,7 @@ create_treemap <- function(file, index, quantity, primary_color, secondary_color
     }
 
     # library
-    library(treemap)
+    # library(treemap)
     treemap::treemap(data,
             index=index,
             vSize = quantity,
