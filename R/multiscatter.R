@@ -26,16 +26,16 @@
 #'
 #' @examples
 #'   \dontrun{
-#'      multiscatter("testdata.csv", 
-#' column_1 , 
-#' c("column2", "column3", "column4"), 
+#'      multiscatter("testdata.csv",
+#' column_1 ,
+#' c("column2", "column3", "column4"),
 #' "topleft", "red","green","
 #' orange","yellow","blue","black")
 #'   }
 #'
 #'
 
-multiscatter <- function(file, x_column, y_columns, legend_pos, primary_color,
+multiscatter <- function(file, x_column, y_column, legend_pos, primary_color,
                       secondary_color, tertiary_color, quaternary_color, quinary_color, senary_color) {
   df <- utils::read.csv(file,header=TRUE,sep=';')
   if (substr(colnames(df)[1],2,3)== ".."){
