@@ -30,6 +30,27 @@ stability_plot <- function(a, b, c, percentage) {
   print(p)
 }
 
+# Calculate stability of model year-over-year
+m_last_year <- sqldf("SELECT ISO3,
+      Year+1 AS Year, Finalcategory
+      FROM test_model")
+ml=replace_letters_with_numbers(m_last_year,"Finalcategory")
+m_stability <- sqldf("SELECT m.ISO3 AS ISO3, m.Year AS Year, m.Finalcategory AS Category_model,
+                ml.ISO3 AS mlISO3, ml.Year AS mlYear, ml.Finalcategory AS Category_model2
+         FROM m LEFT JOIN ml on m.ISO3=ml.ISO3 and m.Year=ml.Year
+                     wHERE m.Year > 2015")
+# tail(m_stability)
+# stability measures
+
+stability_differences=sum(abs(m_stability$Category_model - m_stability$Category_model2)>0,na.rm=TRUE)
+stability_differences_up=sum((m_stability$Category_model - m_stability$Category_model2)>0,na.rm=TRUE)
+stability_differences_down=sum((m_stability$Category_model - m_stability$Category_model2)<0,na.rm=TRUE)
+# Total scores to compare:
+stability_differences_total=sum(!(is.na(m_stability$Category_model - m_stability$Category_model2)),na.rm=TRUE)
+# Size of different scores in total:
+stability_differences_size=sum(m_stability$Category_model - m_stability$Category_model2,na.rm=TRUE)
+
+
 # Generate the plot
 stability_plot(stability_differences_up, stability_differences_down, stability_differences_size,
             round(stability_differences/stability_differences_total*100,0))
