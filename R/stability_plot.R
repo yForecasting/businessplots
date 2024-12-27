@@ -23,6 +23,10 @@ stability_plot <- function(a, b, c, percentage) {
     geom_point(aes(x = 0, y = 0), shape = 21, size = 50, color = "blue", fill = "white") +
     # Add the percentage text
     annotate("text", x = 0, y = 0, label = paste0(percentage, "%"), size = 6, color = "black") +
+    annotate("text", x = 0.1*c, y =  a / 2, label = a, size = 4, hjust = 0) +
+    annotate("text", x = 0.1*c, y = - b / 2, label = b, size = 4, hjust = 0) +
+    annotate("text", x =  0.25*c + c / 2, y = 0.03*a, label = c, size = 4, vjust = 0, data = data.frame(c = c[c >= 0])) +
+    # annotate("text", x =  c / 2, y = 0.1, label = c, size = 4, vjust = 0, data = data.frame(c = c[c < 0])) +
     # Hide axes
     theme_void()
  
