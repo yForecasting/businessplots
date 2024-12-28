@@ -23,4 +23,7 @@ Imports:
     shinydashboard,
     stats,
     grDevices,
-    graphics
+    graphics,
+    sf,
+    rnaturalearth,
+    rnaturalearthdata
