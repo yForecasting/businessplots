@@ -1,19 +1,19 @@
-#' box plot function
+#' Box plot function
 #'
 #' Creates a box plot of the data.
 #'
 #' This function creates a box plot based on a column of a file with data.
 #'
 #' @param file A csv file with the source data
-#' @param main_column Name of the column from the file you want to make a boxplot of.
-#' @param mean_dot_symbol number representing the shape of the symbol for the mean dot.
+#' @param columns Names of the column from the file you want to make a boxplot of.
+#' @param mean_dot_symbol Number representing the shape of the symbol for the mean dot.
 #' @param mean_dot Put True if you want to plot the mean dot.
 #' @param primary_color First color for bar plot
 #' @param secondary_color Second color for bar plot
 #' @param tertiary_color Third color for bar plot
 #' @param quaternary_color Fourth color for bar plot
 #' @param quinary_color Fifth color for bar plot
-#' @param senary_color Sixth color for bar plo
+#' @param senary_color Sixth color for bar plot
 #'
 #' @author Emiel Creus
 #'
@@ -46,7 +46,7 @@ boxplot <- function(file, columns, mean_dot_symbol, mean_dot = FALSE,  primary_c
 
 
   # todo detect sep automatically later ;/,/tab
-  boxplot(x = df[,columns], xlab="", main = "",
+  graphics::boxplot(x = df[,columns], xlab="", main = "",
           col=primary_color,
           medcol=secondary_color,
           whiskcol=tertiary_color,
@@ -58,7 +58,7 @@ boxplot <- function(file, columns, mean_dot_symbol, mean_dot = FALSE,  primary_c
           col.lab = secondary_color)
   if(mean_dot){
     for(column in columns){
-      points(x=mean_dot_position, y=mean(df[,column]), col = senary_color, pch=mean_dot_symbol)
+      graphics::points(x=mean_dot_position, y=mean(df[,column]), col = senary_color, pch=mean_dot_symbol)
       mean_dot_position <- mean_dot_position + 1
     }
 
