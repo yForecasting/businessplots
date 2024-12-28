@@ -47,8 +47,6 @@ create_treemap <- function(file, index, quantity, primary_color, secondary_color
         df <- utils::read.csv(data, fileEncoding = "UTF-8-BOM", header = TRUE, sep = ';')
     }
 
-    # library
-    # library(treemap)
     treemap::treemap(data,
             index=index,
             vSize = quantity,

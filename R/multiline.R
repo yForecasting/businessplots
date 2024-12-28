@@ -8,7 +8,7 @@
 #'
 #' @param file A csv file with the source data
 #' @param x_column Name of the column from the file you want to plot on the x-axis
-#' @param y_column Name of the columns from the file you want to plot on the y-axes
+#' @param y_columns Name of the columns from the file you want to plot on the y-axes
 #' @param legend_pos the position of the legend
 #' @param primary_color First color for line plot
 #' @param secondary_color Second color for line plot
