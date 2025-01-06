@@ -22,6 +22,8 @@ multiline(
 
 \item{x_column}{Name of the column from the file you want to plot on the x-axis}
 
+\item{y_columns}{Name of the columns from the file you want to plot on the y-axes}
+
 \item{legend_pos}{the position of the legend}
 
 \item{primary_color}{First color for line plot}
@@ -35,8 +37,6 @@ multiline(
 \item{quinary_color}{Fifth color for line plot}
 
 \item{senary_color}{Sixth color for line plot}
-
-\item{y_column}{Name of the columns from the file you want to plot on the y-axes}
 }
 \value{
 A multiple line plot

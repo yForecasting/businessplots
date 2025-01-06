@@ -2,12 +2,12 @@
 % Please edit documentation in R/barwithline.R
 \name{barwithline}
 \alias{barwithline}
-\title{function for bar plot with line}
+\title{Bar plot with line}
 \usage{
 barwithline(
   file,
   x_column,
-  y_columns,
+  y_column,
   line_type,
   legend_pos,
   primary_color,
@@ -23,17 +23,21 @@ barwithline(
 
 \item{x_column}{Name of the column from the file you want to plot on the x-axis}
 
+\item{y_column}{Name of the column from the file you want to plot on the y-axis}
+
 \item{line_type}{The type of line you want for the line plot}
 
 \item{primary_color}{First color for line plot}
 
 \item{secondary_color}{Second color for line plot}
 
-\item{y_column}{Name of the column from the file you want to plot on the y-axis}
+\item{tertiary_color}{Third color for scatter plot}
 
-\item{symbol}{Number of the symbol you want for the plot}
+\item{quaternary_color}{Fourth color for scatter plot}
 
-\item{auto_fit}{Put false to start from 0, True shows the best fit.}
+\item{quinary_color}{Fifth color for scatter plot}
+
+\item{senary_color}{Sixth color for scatter plot}
 }
 \value{
 A bar plot with line
@@ -42,13 +46,13 @@ A bar plot with line
 Creates a bar plot with line
 }
 \details{
-this fucntion plots a bar plot with line based on the data
+This function plots a bar plot with line based on the data
 }
 \examples{
   \dontrun{
-     barwithline("testdata.csv", 
-column_1, 
-c("column2", "column3", "column4"), 
+     barwithline("testdata.csv",
+column_1,
+c("column2", "column3", "column4"),
 1, 1, "red","green",
 "orange","yellow","
 blue","black")

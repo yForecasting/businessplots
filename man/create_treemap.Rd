@@ -34,8 +34,6 @@ create_treemap(
 \item{quinary_color}{Fifth color for bar plot}
 
 \item{senary_color}{Sixth color for bar plot}
-
-\item{y_column}{Name of the quantity column from the file you want to plot}
 }
 \value{
 A graphical plot
@@ -60,7 +58,4 @@ and this can be: treemap
 }
 \author{
 Isolde Boussauw
-
-at import forecast
-at import Mcomp
 }

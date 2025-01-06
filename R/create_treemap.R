@@ -8,7 +8,6 @@
 #'
 #' @param file A csv file with the source data
 #' @param index Name of the index column from the file you want to plot
-#' @param y_column Name of the quantity column from the file you want to plot
 #' @param quantity Put True if you want to plot a horizontal bar plot, False for vertical plot.
 #' @param primary_color First color for bar plot
 #' @param secondary_color Second color for bar plot
@@ -18,9 +17,6 @@
 #' @param senary_color Sixth color for bar plot
 #'
 #' @author Isolde Boussauw
-#'
-#' at import forecast
-#' at import Mcomp
 #'
 #' @return A graphical plot
 #' @export
@@ -37,20 +33,24 @@
 #'
 
 # plot a treemap
-create_treemap <- function(file, index, quantity, primary_color, secondary_color, tertiary_color, quaternary_color, quinary_color, senary_color) {
+create_treemap <- function(file, index, quantity, primary_color,
+                           secondary_color, tertiary_color, quaternary_color,
+                           quinary_color, senary_color) {
     # file is the file with all original data to read
     # index_columns are columns to group the tree
 
     # read file
     data <- utils::read.csv(file, header = TRUE, sep = ';')
     if (substr(colnames(data)[1], 2, 3) == ".."){
-        df <- utils::read.csv(data, fileEncoding = "UTF-8-BOM", header = TRUE, sep = ';')
+        df <- utils::read.csv(data, fileEncoding = "UTF-8-BOM", header = TRUE,
+                              sep = ';')
     }
 
     treemap::treemap(data,
             index=index,
             vSize = quantity,
-            palette =  c(primary_color, secondary_color, tertiary_color, quaternary_color, quinary_color, senary_color))
+            palette =  c(primary_color, secondary_color, tertiary_color,
+                         quaternary_color, quinary_color, senary_color))
 
 
 

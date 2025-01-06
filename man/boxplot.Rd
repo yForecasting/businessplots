@@ -2,7 +2,7 @@
 % Please edit documentation in R/boxplot.R
 \name{boxplot}
 \alias{boxplot}
-\title{box plot function}
+\title{Box plot function}
 \usage{
 boxplot(
   file,
@@ -20,7 +20,9 @@ boxplot(
 \arguments{
 \item{file}{A csv file with the source data}
 
-\item{mean_dot_symbol}{number representing the shape of the symbol for the mean dot.}
+\item{columns}{Names of the column from the file you want to make a boxplot of.}
+
+\item{mean_dot_symbol}{Number representing the shape of the symbol for the mean dot.}
 
 \item{mean_dot}{Put True if you want to plot the mean dot.}
 
@@ -34,9 +36,7 @@ boxplot(
 
 \item{quinary_color}{Fifth color for bar plot}
 
-\item{senary_color}{Sixth color for bar plo}
-
-\item{main_column}{Name of the column from the file you want to make a boxplot of.}
+\item{senary_color}{Sixth color for bar plot}
 }
 \value{
 A box plot
